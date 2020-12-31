@@ -1,16 +1,16 @@
-import './App.css'
+
 
 //components
-// import ProtectedRoutes from './views/ProtectedRoutes'
-import Auth from './views/Auth'
+import ProtectedRoutes from './views/ProtectedRoutes'
+// import Auth from './views/Auth'
 
 function App() {
   return (
     
 
   <>
-  {/* <ProtectedRoutes /> */}
-  <Auth/>
+  <ProtectedRoutes />
+  {/* <Auth/> */}
   </>
 
    

@@ -6,9 +6,6 @@ function Index(props) {
         <div className="text-center font-bold border col-span-7 h-auto">
 
 
-            <p className="text-test">
-                dshfuudhfuishue
-            </p>
         </div>
     )
 }
