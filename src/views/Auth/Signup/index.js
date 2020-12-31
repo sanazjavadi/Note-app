@@ -1,10 +1,13 @@
 import React from "react";
 
+import styles from './styles.module.scss';
+
 function Index({ login }) {
   return (
     <div className="mx-auto lg:w-4/12  md:w-5/12 sm:w-6/12 w-9/12 min-w-min	 h-auto flex items-center justify-center rounded-2xl flex-col bg-DarkPurple">
       <div className="text-white flex items-center justify-between px-5 w-full p-7">
         <span className="text-xl">Sign up</span>
+        <span className={styles.test} >tets</span>
       </div>
       <hr className="h-2 w-full opacity-10" />
       <form className="w-10/12 mt-7">

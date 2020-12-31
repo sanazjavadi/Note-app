@@ -2103,8 +2103,7 @@ video {
 }
 
 .bg-clip-text {
-  -webkit-background-clip: text;
-          background-clip: text;
+  background-clip: text;
 }
 
 .bg-transparent {
@@ -29752,29 +29751,6 @@ video {
   animation: bounce 1s infinite;
 }
 
-.input {
-  -webkit-appearance: none;
-          appearance: none;
-  --tw-bg-opacity: 1;
-  background-color: rgba(23, 18, 32, var(--tw-bg-opacity));
-  border-radius: 1rem;
-}
-
-.input:focus {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
-.input {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  --tw-text-opacity: 1;
-  color: rgba(243, 244, 246, var(--tw-text-opacity));
-  width: 100%;
-}
-
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -31343,8 +31319,7 @@ video {
   }
 
   .sm\:bg-clip-text {
-    -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
   }
 
   .sm\:bg-transparent {
@@ -60517,8 +60492,7 @@ video {
   }
 
   .md\:bg-clip-text {
-    -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
   }
 
   .md\:bg-transparent {
@@ -89691,8 +89665,7 @@ video {
   }
 
   .lg\:bg-clip-text {
-    -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
   }
 
   .lg\:bg-transparent {
@@ -118865,8 +118838,7 @@ video {
   }
 
   .xl\:bg-clip-text {
-    -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
   }
 
   .xl\:bg-transparent {
@@ -148039,8 +148011,7 @@ video {
   }
 
   .\32xl\:bg-clip-text {
-    -webkit-background-clip: text;
-            background-clip: text;
+    background-clip: text;
   }
 
   .\32xl\:bg-transparent {
@@ -175644,6 +175615,7 @@ video {
     animation: bounce 1s infinite;
   }
 }
+
 
 
   
