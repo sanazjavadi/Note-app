@@ -30,13 +30,13 @@ const Index: React.FC = () => {
             </div>
 
             <div className="mt-auto mb-5 border-t-3 border-grey-300">
-                <div className=" px-4 relative">
+                <div className=" px-4 relative pallet-buttom">
                     <PalletIcon className="w-7 h-7 cursor-pointer add-theme" />
                     <div className="bg-gray-800 w-6 h-6 rounded-full palet"> </div>
-                    <div className="w-6 h-6 bg-green-800	 rounded-full palet" />
-                    <div className="w-6 h-6 bg-yellow-100	 rounded-full palet" />
-                    <div className="w-6 h-6 bg-blue-800	 rounded-full palet" />
-                    <div className="w-6 h-6 bg-purple-800	 rounded-full palet" />
+                    <div className="w-6 h-6 bg-green-800 rounded-full palet" />
+                    <div className="w-6 h-6 bg-yellow-100 rounded-full palet" />
+                    <div className="w-6 h-6 bg-blue-800	rounded-full palet" />
+                    <div className="w-6 h-6 bg-purple-800 rounded-full palet" />
                 </div>
                 <div className="flex justify-between items-center px-5 pt-4 items-end ">
                     <SignOutIcon className="w-6 h-6 cursor-pointer" fill="grey" />

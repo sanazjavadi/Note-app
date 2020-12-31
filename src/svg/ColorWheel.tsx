@@ -1,6 +1,8 @@
 import * as React from 'react';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable react/jsx-props-no-spreading */
 
-function SvgColorWheel(props) {
+function SvgColorWheel(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
     return (
         <svg height={512} viewBox="0 0 128 128" width={512} xmlns="http://www.w3.org/2000/svg" {...props}>
             <path

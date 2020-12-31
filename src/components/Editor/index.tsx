@@ -1,8 +1,7 @@
 import React from 'react';
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-function Index() {
+const Index: React.FC = () => {
     return <div className="text-center font-bold border col-span-7 h-auto" />;
-}
+};
 
 export default Index;

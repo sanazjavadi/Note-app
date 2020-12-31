@@ -7,6 +7,7 @@
   left:20px;
   top:0;
   transition: all .5s linear;
+  cursor: pointer;
 }
 
 .palet:nth-of-type(1){
@@ -29,26 +30,26 @@
   position: relative;
 }
 
-.add-theme:hover ~ .palet{
+.pallet-buttom:hover > .palet{
   opacity: 1;
   }
-.add-theme:hover ~ .palet:nth-of-type(1)
+.pallet-buttom:hover > .palet:nth-of-type(1)
 {
   left: 60px;
 }
-.add-theme:hover ~ .palet:nth-of-type(2)
+.pallet-buttom:hover > .palet:nth-of-type(2)
 {
   left: 90px;
 }
-.add-theme:hover ~ .palet:nth-of-type(3)
+.pallet-buttom:hover > .palet:nth-of-type(3)
 {
   left: 120px;
 }
-.add-theme:hover ~ .palet:nth-of-type(4)
+.pallet-buttom:hover > .palet:nth-of-type(4)
 {
   left: 150px;
 }
-.add-theme:hover ~ .palet:nth-of-type(5)
+.pallet-buttom:hover > .palet:nth-of-type(5)
 {
   left: 180px;
 }
