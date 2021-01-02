@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable react/jsx-props-no-spreading */
+
 import * as React from 'react';
 
-function SvgUser(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
+function SvgUser(props) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" {...props}>
             <path

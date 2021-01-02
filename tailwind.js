@@ -17,8 +17,18 @@ module.exports = {
         'LightPurple': '#7E43E2',
         'DarkPurple' : '#271E36',
         'ShadePurple': '#171220',
-          'violet' : '#392f53'
-      }
+          'violet' : '#392f53',
+   
+      },
+      backgroundColor: {
+        primary: "var(--color-bg-primary)",
+        secondary: "var(--color-bg-secondary)",
+      },
+      textColor: {
+        accent: "var(--color-text-accent)",
+        primary: "var(--color-text-primary)",
+        secondary: "var(--color-text-secondary)",
+      },
     },
     colors: {
       transparent: 'transparent',

@@ -1,3 +1,80 @@
+body::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+body {
+  font-size: 1rem;
+  font-family: var(--font), sans-serif;
+  color: var(--primaryColor);
+  background-color: var(--bg);
+  line-height: 1.8;
+  position: relative;
+  overflow-x: hidden;
+}
+.border-theme {
+  border-left:1px solid var(--secondaryColor);
+  border-right:1px solid var(--secondaryColor);
+}
+
+input,
+textarea {
+  font-family: var(--font), sans-serif;
+  font-size: 1rem;
+}
+
+
+textarea:focus,
+button:focus,
+[role="button"]:focus,
+video:focus {
+  outline: none;
+  appearance: none;
+  border: none;
+}
+
+
+button {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+textarea {
+  resize: none;
+}
+
+::placeholder { 
+   color: var(--secondaryColor) !important;
+}
+/* common styles */
+.app-btn{
+	background-color: var(--tertiaryColor);
+	border: 1px solid var(--ruler);
+  color: var(--primaryColor) !important;
+}
+
+.app-svg{
+  fill: var(--primaryColor);
+}
+.app-input{
+  background-color: var(--tertiaryColor);
+  color: var(--primaryColor);
+  border:1px solid var(--tertiaryColor);
+}
+
+
+.notebook-list ul li {
+  background-color: var(--tertiaryColor);
+  color: var(--primaryColor);
+}
+
+.edit-list{
+  background-color: var(--tertiaryColor);
+  color: var(--primaryColor);
+}
+
 
 
 

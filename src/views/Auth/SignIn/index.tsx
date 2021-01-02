@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { ReactEventHandler } from 'react';
+import React from 'react';
 
 type Iprops = {
-    signup: ReactEventHandler;
+    signup: () => void;
 };
 
 const Index: React.FC<Iprops> = ({ signup }) => {
