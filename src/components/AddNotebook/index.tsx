@@ -1,16 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { closeModalNote } from '../../reducers/modal';
+import { closeNotebookModal } from '../../reducers/modal';
+
 // assets
 import CloseIcon from '../../svg/Cancel';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
+
     return (
         <div className="relative mx-auto w-3/12 h-5/12 bg-white z-11 mt-32 rounded-2xl pb-6">
             <CloseIcon
                 className="w-5 h-5 absolute right-5 top-5 cursor-pointer"
-                onClick={() => dispatch(closeModalNote())}
+                onClick={() => dispatch(closeNotebookModal())}
             />
 
             <div className="flex items-center justify-between">
@@ -36,7 +38,7 @@ const Index: React.FC = () => {
                     type="button"
                     className="mt-5 rounded-full border-4 border-gray-600 bg-white text-gray-900 py-2 px-6"
                 >
-                    add new note
+                    add notebook
                 </button>
             </div>
         </div>

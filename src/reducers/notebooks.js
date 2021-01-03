@@ -3,7 +3,15 @@ import { createSlice } from '@reduxjs/toolkit';
 const notebookSlice = createSlice({
     name: 'notebooks',
     initialState: [],
-    reducers: {},
+    reducers: {
+      
+        function addNewNote(state, action) {
+            state.push
+        }
+    
+
+
+    },
 });
 
 export default notebookSlice.reducer;

@@ -1,23 +1,27 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeTheme } from '../../reducers/theme';
-import { openModalNote, selectModal } from '../../reducers/modal';
+import { modalState, openNotebookModal, openNoteModal } from '../../reducers/modal';
 
 // components
 import Modal from '../Modal';
-import NewNote from '../NewNote';
+import AddNewNoteBook from '../AddNotebook';
+import NotebookOption from '../NotebookOption';
+import AddNewnote from '../AddNewnote';
 
 // assets
 import Avatar from '../../svg/User';
-import EditIcon from '../../svg/Edit';
 import AddIcon from '../../svg/Add';
 import SignOutIcon from '../../svg/SignOut';
 import PalletIcon from '../../svg/ColorWheel';
+import PlusIcon from '../../svg/Plus';
+import MenuIcon from '../../svg/Menu';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
-    const { noteModal } = useSelector(selectModal);
-
+    const { notebookModal, noteModal } = useSelector(modalState);
+    const [optionOpen, setoptionOpen] = useState(false);
     return (
         <div className="col-span-2  h-screen flex flex-col">
             <div className="flex flex-col justify-center items-center border-b-1 pb-3 border-grey-100 mt-5">
@@ -28,13 +32,18 @@ const Index: React.FC = () => {
             </div>
             <div className="notebook-list mt-3">
                 <ul>
-                    <li className="py-3 px-5  bg-red-200 rounded-sm transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500 ">
+                    <li className="py-3 px-3 rounded-lg transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500 ">
                         first list
-                        <EditIcon className="w-5 h-5 app-svg" />
-                    </li>
-                    <li className="py-3 px-5  bg-purple-200 transition-opacity rounded-sm	mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 mt-3 duration-500">
-                        first list
-                        <EditIcon className="w-5 h-5 app-svg" />
+                        <div className="flex items-center relative ">
+                            <span onMouseOver={() => setoptionOpen(true)} onMouseLeave={() => setoptionOpen(false)}>
+                                <MenuIcon className="w-4 h-4 app-svg mr-2 hover:opacity-50" />
+                                {optionOpen && <NotebookOption />}
+                            </span>
+                            <PlusIcon
+                                className="w-4 h-4 app-svg  hover:opacity-50"
+                                onClick={() => dispatch(openNoteModal())}
+                            />
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -56,12 +65,21 @@ const Index: React.FC = () => {
                 </div>
                 <div className="flex justify-between items-center px-5 pt-4 items-end ">
                     <SignOutIcon className="w-6 h-6 cursor-pointer app-svg" />
-                    <AddIcon className="w-12 h-12 cursor-pointer app-svg" onClick={() => dispatch(openModalNote())} />
+                    <AddIcon
+                        className="w-12 h-12 cursor-pointer app-svg"
+                        onClick={() => dispatch(openNotebookModal())}
+                    />
                 </div>
             </div>
+            {notebookModal && (
+                <Modal>
+                    <AddNewNoteBook />
+                </Modal>
+            )}
+
             {noteModal && (
                 <Modal>
-                    <NewNote />
+                    <AddNewnote />
                 </Modal>
             )}
         </div>
