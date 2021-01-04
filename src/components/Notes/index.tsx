@@ -1,9 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { notebooksState } from '../../reducers/notebooks';
+
+// components
+import Note from '../Note';
 
 // assets
 import SearchIcon from '../../svg/MagnifiyingGlass';
 
 const Index: React.FC = () => {
+    const noteBooks = useSelector(notebooksState);
+
     return (
         <div className="text-center col-span-3 border-theme">
             <div className="p-8">
@@ -15,13 +22,12 @@ const Index: React.FC = () => {
                         placeholder="Search"
                     />
 
-                    <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 w-4 h-4">
+                    <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 w-4 h-4 ">
                         <SearchIcon className="app-svg" />
                     </button>
                 </div>
             </div>
-
-            <div className="py-7 pl-3 rounded-sm  mx-2 edit-list text-left">gg</div>
+            {noteBooks?.map((notebook?: any) => notebook.pages?.map((page?: any) => <Note page={page} />))}
         </div>
     );
 };

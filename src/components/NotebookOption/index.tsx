@@ -1,11 +1,30 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { removeNote, duplicateNote } from '../../reducers/notebooks';
 
-const Index: React.FC = () => {
+type Iprops = {
+    id: number;
+};
+
+const Index: React.FC<Iprops> = ({ id }) => {
+    const dispatch = useDispatch();
     return (
         <div className="bg-gray-400 top-5 -left-8 p-4 rounded-lg flex flex-col text-xs font-bold text-gray-600 absolute z-10">
-            <div className="hover:opacity-50">Delete</div>
-            <div className="mt-3 hover:opacity-50">Duplicate</div>
-            <div className="mt-3 hover:opacity-50">Copy link</div>
+            <span className="hover:opacity-50" onClick={() => dispatch(removeNote(id))}>
+                Delete
+            </span>
+            <div className="mt-3 hover:opacity-50" onClick={() => dispatch(duplicateNote(id))}>
+                Duplicate
+            </div>
+            <div
+                className="mt-3 hover:opacity-50"
+                onClick={() => navigator.clipboard.writeText('Copy this text to clipboard')}
+            >
+                Copy link
+            </div>
             <div className="mt-3 hover:opacity-50">Rename</div>
         </div>
     );

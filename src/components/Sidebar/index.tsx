@@ -1,27 +1,25 @@
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeTheme } from '../../reducers/theme';
-import { modalState, openNotebookModal, openNoteModal } from '../../reducers/modal';
+import { modalState, openNotebookModal } from '../../reducers/modal';
+import { notebooksState } from '../../reducers/notebooks';
 
 // components
 import Modal from '../Modal';
 import AddNewNoteBook from '../AddNotebook';
-import NotebookOption from '../NotebookOption';
-import AddNewnote from '../AddNewnote';
+import Notebook from '../NoteBook';
 
 // assets
 import Avatar from '../../svg/User';
 import AddIcon from '../../svg/Add';
 import SignOutIcon from '../../svg/SignOut';
 import PalletIcon from '../../svg/ColorWheel';
-import PlusIcon from '../../svg/Plus';
-import MenuIcon from '../../svg/Menu';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
-    const { notebookModal, noteModal } = useSelector(modalState);
-    const [optionOpen, setoptionOpen] = useState(false);
+    const { notebookModal } = useSelector(modalState);
+    const noteBooks = useSelector(notebooksState);
+
     return (
         <div className="col-span-2  h-screen flex flex-col">
             <div className="flex flex-col justify-center items-center border-b-1 pb-3 border-grey-100 mt-5">
@@ -32,19 +30,9 @@ const Index: React.FC = () => {
             </div>
             <div className="notebook-list mt-3">
                 <ul>
-                    <li className="py-3 px-3 rounded-lg transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500 ">
-                        first list
-                        <div className="flex items-center relative ">
-                            <span onMouseOver={() => setoptionOpen(true)} onMouseLeave={() => setoptionOpen(false)}>
-                                <MenuIcon className="w-4 h-4 app-svg mr-2 hover:opacity-50" />
-                                {optionOpen && <NotebookOption />}
-                            </span>
-                            <PlusIcon
-                                className="w-4 h-4 app-svg  hover:opacity-50"
-                                onClick={() => dispatch(openNoteModal())}
-                            />
-                        </div>
-                    </li>
+                    {noteBooks?.map((notebook?: any) => (
+                        <Notebook notebook={notebook} key={notebook.id} />
+                    ))}
                 </ul>
             </div>
 
@@ -57,11 +45,11 @@ const Index: React.FC = () => {
                     onClick={() => dispatch(changeTheme())}
                 >
                     <PalletIcon className="w-7 h-7 cursor-pointer add-theme" />
-                    <div className="bg-gray-800 w-6 h-6 rounded-full palet"> </div>
-                    <div className="w-6 h-6 bg-green-800 rounded-full palet" />
+                    <div className="bg-gray-700 w-6 h-6 rounded-full palet" />
+                    <div className="w-6 h-6 bg-green-700 rounded-full palet" />
                     <div className="w-6 h-6 bg-yellow-100 rounded-full palet" />
-                    <div className="w-6 h-6 bg-blue-800	rounded-full palet" />
-                    <div className="w-6 h-6 bg-purple-800 rounded-full palet" />
+                    <div className="w-6 h-6 bg-blue-700	rounded-full palet" />
+                    <div className="w-6 h-6 bg-purple-700 rounded-full palet" />
                 </div>
                 <div className="flex justify-between items-center px-5 pt-4 items-end ">
                     <SignOutIcon className="w-6 h-6 cursor-pointer app-svg" />
@@ -71,15 +59,10 @@ const Index: React.FC = () => {
                     />
                 </div>
             </div>
+
             {notebookModal && (
                 <Modal>
                     <AddNewNoteBook />
-                </Modal>
-            )}
-
-            {noteModal && (
-                <Modal>
-                    <AddNewnote />
                 </Modal>
             )}
         </div>

@@ -27,11 +27,23 @@ textarea {
 
 textarea:focus,
 button:focus,
+[type="button"]:focus,
 [role="button"]:focus,
 video:focus {
   outline: none;
   appearance: none;
   border: none;
+}
+.notebook-options{
+display: none;
+  transition: all .3s ease-in;
+}
+.options{
+  transition: all .3s ease-in;
+}
+
+.options:hover > .notebook-options{
+display: block;
 }
 
 
@@ -42,7 +54,7 @@ button {
 }
 
 textarea {
-  resize: none;
+  resize: none !important;
 }
 
 ::placeholder { 
@@ -54,6 +66,16 @@ textarea {
 	border: 1px solid var(--ruler);
   color: var(--primaryColor) !important;
 }
+.app-btn-outline{
+  background-color: white;
+  border:3px solid var(--secondaryColor);
+  color: var(--secondaryColor);
+}
+.app-btn-outline:focus{
+  border:3px solid var(--tertiaryColor);
+}
+
+
 
 .app-svg{
   fill: var(--primaryColor);
@@ -74,9 +96,6 @@ textarea {
   background-color: var(--tertiaryColor);
   color: var(--primaryColor);
 }
-
-
-
 
 .palet{
   opacity: 0;

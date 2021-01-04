@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { closeNotebookModal } from '../../reducers/modal';
+import { addNewNote } from '../../reducers/notebooks';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
+    const [title, settitle] = useState('');
+    const addNotebookHandler = (e) => {
+        e.preventDefault();
+
+        const data = {
+            id: Math.floor(Math.random() * 100),
+            title,
+            pages: [],
+        };
+
+        dispatch(closeNotebookModal());
+        dispatch(addNewNote(data));
+        settitle('');
+    };
 
     return (
         <div className="relative mx-auto w-3/12 h-5/12 bg-white z-11 mt-32 rounded-2xl pb-6">
@@ -23,8 +38,6 @@ const Index: React.FC = () => {
                         className="absolute w-7/12 -top-6 left-7"
                     />
                 </div>
-
-                {/* <p className="text-left text-red-900 p-7 mt-5"> add note</p> */}
             </div>
 
             <div className="w-full flex flex-col items-center justify-center">
@@ -32,11 +45,14 @@ const Index: React.FC = () => {
                     type="text"
                     placeholder="add New Note"
                     className="py-3 px-4 w-10/12 rounded-full mt-8 app-input focus:outline-none"
+                    value={title}
+                    onChange={(e) => settitle(e.target.value)}
                 />
 
                 <button
                     type="button"
-                    className="mt-5 rounded-full border-4 border-gray-600 bg-white text-gray-900 py-2 px-6"
+                    className="mt-5 rounded-full  py-2 px-6 app-btn-outline"
+                    onClick={addNotebookHandler}
                 >
                     add notebook
                 </button>
