@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import useInput from '../../hooks/useInput';
 import { closeNoteModal } from '../../reducers/modal';
 import { addPages } from '../../reducers/notebooks';
 
@@ -13,13 +14,13 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ id }) => {
     const dispatch = useDispatch();
-    const [txtArea, settxtArea] = useState('');
+    const txtArea = useInput('');
     const handleClick = () => {
         dispatch(closeNoteModal());
         dispatch(
             addPages({
                 id,
-                txtArea,
+                txtArea: txtArea.value,
             }),
         );
     };
@@ -38,8 +39,8 @@ const Index: React.FC<Iprops> = ({ id }) => {
                 <textarea
                     placeholder="untitled"
                     className="py-3 px-4 w-10/12 rounded-lg mt-8 app-input focus:outline-none"
-                    value={txtArea}
-                    onChange={(e) => settxtArea(e.target.value)}
+                    value={txtArea.value}
+                    onChange={txtArea.onChange}
                 />
                 <p className="cursor-pointer text-gray-800 opacity-50 mt-1 text-left w-10/12">add cover</p>
                 <button type="button" className="mt-5 rounded-lg app-btn-outline py-2 px-6" onClick={handleClick}>

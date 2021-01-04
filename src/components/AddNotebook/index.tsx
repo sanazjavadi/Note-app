@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import useInput from '../../hooks/useInput';
 import { closeNotebookModal } from '../../reducers/modal';
 import { addNewNote } from '../../reducers/notebooks';
 
@@ -8,19 +9,20 @@ import CloseIcon from '../../svg/Cancel';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
-    const [title, settitle] = useState('');
+
+    const title = useInput('');
     const addNotebookHandler = (e) => {
         e.preventDefault();
 
         const data = {
             id: Math.floor(Math.random() * 100),
-            title,
+            title: title.value,
             pages: [],
         };
 
         dispatch(closeNotebookModal());
         dispatch(addNewNote(data));
-        settitle('');
+        title.setValue('');
     };
 
     return (
@@ -45,8 +47,8 @@ const Index: React.FC = () => {
                     type="text"
                     placeholder="add New Note"
                     className="py-3 px-4 w-10/12 rounded-full mt-8 app-input focus:outline-none"
-                    value={title}
-                    onChange={(e) => settitle(e.target.value)}
+                    value={title.value}
+                    onChange={title.onChange}
                 />
 
                 <button
