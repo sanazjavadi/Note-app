@@ -27,13 +27,17 @@ textarea {
 
 textarea:focus,
 button:focus,
+[type="submit"]:focus,
 [type="button"]:focus,
 [role="button"]:focus,
 video:focus {
   outline: none;
   appearance: none;
-  border: none;
+  border: none !important;
 }
+
+
+
 .notebook-options{
 display: none;
   transition: all .3s ease-in;
@@ -80,9 +84,10 @@ textarea {
 .app-svg{
   fill: var(--primaryColor);
 }
+input:-internal-autofill-selected,
 .app-input{
-  background-color: var(--tertiaryColor);
-  color: var(--primaryColor);
+  background-color: var(--tertiaryColor) !important;
+  color: var(--primaryColor) !important;
   border:1px solid var(--tertiaryColor);
 }
 

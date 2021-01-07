@@ -12,7 +12,7 @@ const Index: React.FC = () => {
     const noteBooks = useSelector(notebooksState);
 
     return (
-        <div className="text-center col-span-3 border-theme">
+        <div className="text-center lg:col-span-3 col-span-4 xl:col-span-3 hidden md:block border-theme h-screen">
             <div className="p-8">
                 <div className="flex items-center rounded-3xl  rounded-full relative ">
                     <input
@@ -22,8 +22,8 @@ const Index: React.FC = () => {
                         placeholder="Search"
                     />
 
-                    <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 w-4 h-4 ">
-                        <SearchIcon className="app-svg" />
+                    <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 w-4 h-4 focus:border-0">
+                        <SearchIcon className="app-svg " />
                     </button>
                 </div>
             </div>
