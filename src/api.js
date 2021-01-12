@@ -5,11 +5,11 @@
 import axios from 'axios';
 
 // Set config defaults when creating the instance
-const instance = axios.create({
+export const instance = axios.create({
     baseURL: 'http://localhost:3030/',
 });
 
-const AUTH_TOKEN = localStorage.getItem('token');
+export const AUTH_TOKEN = localStorage.getItem('token');
 
 // Alter defaults after instance has been created
 instance.defaults.headers.common.Authorization = AUTH_TOKEN || '';
@@ -34,7 +34,9 @@ instance.defaults.timeout = 2500;
 export const signUp = (data) => {
     return instance
         .post('/v1/auth/register', data)
-        .then((res) => console.log(res))
+        .then((res) => {
+            localStorage.setItem('token', res.data.accessToken);
+        })
         .catch((error) => console.log(error.response || error));
 };
 

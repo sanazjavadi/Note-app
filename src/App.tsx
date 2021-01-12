@@ -4,9 +4,9 @@ import { applyTheme } from './utils';
 import { themeState } from './reducers/theme';
 
 // components
-import ProtectedRoutes from './views/ProtectedRoutes';
+// import ProtectedRoutes from './views/ProtectedRoutes';
 
-// import Auth from './views/Auth'
+import Auth from './views/Auth';
 
 const App: React.FC = () => {
     const { theme } = useSelector(themeState);
@@ -17,9 +17,9 @@ const App: React.FC = () => {
 
     return (
         <div>
-            <ProtectedRoutes />
+            {/* <ProtectedRoutes /> */}
 
-            {/* <Auth/> */}
+            <Auth />
         </div>
     );
 };

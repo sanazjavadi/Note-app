@@ -1,17 +1,31 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
+import { signUp, userState } from '../../../reducers/auth';
 
 type Iprops = {
     login: () => void;
 };
 
 const Index: React.FC<Iprops> = ({ login }) => {
+    const dispatch = useDispatch();
+    const users = useSelector(userState);
+
     // form values
     const name = useInput('');
     const email = useInput('');
     const password = useInput('');
     const secondPass = useInput('');
+
+    const handlesignUp = () => {
+        const data = {
+            email: email.value,
+            name: name.value,
+            password: password.value,
+        };
+        dispatch(signUp(data));
+    };
     return (
         <div className="mx-auto lg:w-4/12  md:w-5/12 sm:w-6/12 w-9/12 min-w-min	 h-auto flex items-center justify-center rounded-2xl flex-col bg-DarkPurple">
             <div className="text-white flex items-center justify-between px-5 w-full p-7">
@@ -51,6 +65,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                 <button
                     type="button"
                     className="bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out"
+                    onClick={() => handlesignUp()}
                 >
                     Sign Up
                 </button>
