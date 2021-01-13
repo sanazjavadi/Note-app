@@ -6,6 +6,7 @@ import { addNewNote } from '../../reducers/notebooks';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
+import Note from '../../svg/NoteImg';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Index: React.FC = () => {
     };
 
     return (
-        <div className="relative mx-auto md:w-5/12 lg:h-5/12 w-9/12 sm:w-6/12 bg-white z-11 mt-32 rounded-2xl pb-6 ">
+        <div className="relative mx-auto md:w-5/12 lg:h-5/12  xl:w-3/12 sm:w-6/12 w-9/12 bg-white z-11 mt-32 rounded-2xl pb-6 ">
             <CloseIcon
                 className="w-5 h-5 absolute right-5 top-5 cursor-pointer"
                 onClick={() => dispatch(closeNotebookModal())}
@@ -34,11 +35,9 @@ const Index: React.FC = () => {
 
             <div className="flex items-center justify-between">
                 <div className="mb-5 w-7/12 h-16 relative">
-                    <img
-                        src="https://www.flaticon.com/svg/static/icons/svg/2891/2891837.svg"
-                        alt=""
-                        className="absolute w-7/12 -top-6 left-7"
-                    />
+                    <div className="absolute absolute -top-6 left-7 ">
+                        <Note className="app-svg" />
+                    </div>
                 </div>
             </div>
 

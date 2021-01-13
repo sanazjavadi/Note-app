@@ -29,7 +29,7 @@ const Index: React.FC = () => {
             <div
                 className={`${styles['bg-sidebar']} ${
                     size > 900
-                        ? 'xl:col-span-2 lg:col-span-3 sm:col-span-3 flex h-screen flex flex-col border-theme-right'
+                        ? 'xl:col-span-2 lg:col-span-3 sm:col-span-3 flex h-screen flex flex-col border-theme'
                         : styles.mobileSide
                 }`}
             >

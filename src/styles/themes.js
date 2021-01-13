@@ -65,7 +65,7 @@ export const gruvboxDarkTheme = {
 
 export const nordTheme = {
     '--bg': '#dfd3d3',
-    '--primaryColor': '#7c7575 ',
+    '--primaryColor': '#7c7575',
     '--secondaryColor': '#fbf0f0',
     '--tertiaryColor': '#b8b0b0',
     '--accent': '#87C0D0',
@@ -74,12 +74,12 @@ export const nordTheme = {
     '--bs1': '0 0 10px 3px rgba(0, 0, 0, 0.2)',
     '--overlay': 'rgba(0, 0, 0, 0.6)',
     '--font': 'Fira Sans',
-    '--ruler': '#3B4252',
+    '--ruler': '#7c7575',
 };
 
 export const draculaTheme = {
     '--bg': '#282A36',
-    '--primaryColor': '#F8F8F2',
+    '--primaryColor': '#565583',
     '--secondaryColor': '#565583',
     '--tertiaryColor': '#21222C',
     '--accent': '#FF79C6',

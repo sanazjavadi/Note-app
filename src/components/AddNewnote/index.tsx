@@ -26,7 +26,7 @@ const Index: React.FC<Iprops> = ({ id }) => {
     };
 
     return (
-        <div className="relative mx-auto w-5/12 h-5/12 bg-white z-11 mt-32 rounded-2xl p-6">
+        <div className="relative mx-auto w-10/12 h-5/12 sm:w-7/12 md:w-6/12 lg:w-4/12  bg-white z-11 mt-32 rounded-2xl p-6">
             <CloseIcon
                 className="w-5 h-5 absolute right-5 top-5 cursor-pointer"
                 onClick={() => dispatch(closeNoteModal())}

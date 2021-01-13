@@ -12,7 +12,7 @@ const Index: React.FC = () => {
     const noteBooks = useSelector(notebooksState);
 
     return (
-        <div className="text-center xl:col-span-3 col-span-3 sm:hidden hidden xl:flex flex flex-col items-center border-theme-right h-screen">
+        <div className="text-center xl:col-span-3 col-span-3 sm:hidden hidden xl:flex flex flex-col items-center border-theme h-screen">
             <div className="p-8 w-full">
                 <div className="flex items-center rounded-3xl  rounded-full relative ">
                     <input

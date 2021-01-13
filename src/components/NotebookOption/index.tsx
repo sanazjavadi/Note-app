@@ -12,7 +12,7 @@ type Iprops = {
 const Index: React.FC<Iprops> = ({ id }) => {
     const dispatch = useDispatch();
     return (
-        <div className="bg-gray-400 top-5 -left-8 p-4 rounded-lg flex flex-col text-xs font-bold text-gray-600 absolute z-10">
+        <div className="top-5 options-list -left-8 p-4 rounded-lg flex flex-col text-xs font-bold absolute z-10">
             <span className="hover:opacity-50" onClick={() => dispatch(removeNote(id))}>
                 Delete
             </span>

@@ -1,9 +1,4 @@
-body::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-body::-webkit-scrollbar-thumb {
-  background: var(--accent);
-}
+
 body {
   font-size: 1rem;
   font-family: var(--font), sans-serif;
@@ -13,11 +8,9 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-.border-theme-left {
-  border-left:1px solid var(--secondaryColor);
-}
-.border-theme-right{
-  border-right:1px solid var(--secondaryColor);
+
+.border-theme{
+  border-right:1px solid var(--ruler);
 }
 
 input,
@@ -54,7 +47,6 @@ display: block;
 
 
 button {
-  font-family: "Fira Sans", sans-serif;
   font-size: 1rem;
   cursor: pointer;
 }
@@ -74,8 +66,8 @@ textarea {
 }
 .app-btn-outline{
   background-color: white;
-  border:3px solid var(--secondaryColor);
-  color: var(--secondaryColor);
+  border:3px solid var(--tertiaryColor);
+  color: var(--tertiaryColor);
 }
 .app-btn-outline:focus{
   border:3px solid var(--tertiaryColor);
@@ -97,6 +89,12 @@ input:-internal-autofill-selected,
 .notebook-list ul li {
   background-color: var(--bg);
   color: var(--primaryColor);
+}
+
+.options-list {
+  background-color: var(--bg);
+  color: var(--primaryColor);
+  border:1px solid var(--ruler)
 }
 
 .edit-list{
@@ -129,7 +127,7 @@ input:-internal-autofill-selected,
   transition-delay:.5s;
 }
 .add-theme{
-  z-index: 999;
+  z-index: 9;
   position: relative;
 }
 
