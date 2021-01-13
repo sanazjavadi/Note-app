@@ -1,45 +1,43 @@
+.bg-sidebar {
+    background: var(--tertiaryColor);
+    color: var(--secondaryColor);
+}
 
-
-.mobileSide{
+.mobileSide {
     position: relative;
     display: flex;
     flex-direction: column;
-    top:0;
+    top: 0;
     height: 100vh;
     width: 100px;
-    left:0px;
-    transition:width .3s linear;
-    background: var(--tertiaryColor);
-    color: var(--secondaryColor);
-    &:hover{
+    left: 0px;
+    transition: width 0.3s linear;
+
+    &:hover {
         width: 250px;
     }
-    &:hover  .bottom-sidebar {
+    &:hover .bottom-sidebar {
         flex-direction: row;
         margin: 0 1rem;
         justify-content: space-between;
     }
-    &:hover  .notebook-list {
-        background: var(--tertiaryColor);
-        color: var(--secondaryColor);   
-       position: relative;
-       left: 0;
-       width: 100%;
+    &:hover .notebook-list {
+        position: relative;
+        left: 0;
+        width: 100%;
     }
-    .bottom-sidebar{
-        transition: flex-direction .3s linear;
+    .bottom-sidebar {
+        transition: flex-direction 0.3s linear;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
         justify-content: center;
     }
-    .notebook-list{
-        transition: all .3s linear;
-        background: var(--tertiaryColor);
-        color: var(--secondaryColor);   
+    .notebook-list {
+        transition: all 0.3s linear;
+
         position: absolute;
-         width: 184px;
+        width: 184px;
         left: -100%;
-       
     }
 }

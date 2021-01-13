@@ -26,7 +26,7 @@ const Index: React.FC = () => {
     };
 
     return (
-        <div className="relative mx-auto w-3/12 h-5/12 bg-white z-11 mt-32 rounded-2xl pb-6">
+        <div className="relative mx-auto md:w-5/12 lg:h-5/12 w-9/12 sm:w-6/12 bg-white z-11 mt-32 rounded-2xl pb-6 ">
             <CloseIcon
                 className="w-5 h-5 absolute right-5 top-5 cursor-pointer"
                 onClick={() => dispatch(closeNotebookModal())}

@@ -95,7 +95,7 @@ input:-internal-autofill-selected,
 
 
 .notebook-list ul li {
-  background-color: var(--tertiaryColor);
+  background-color: var(--bg);
   color: var(--primaryColor);
 }
 
@@ -139,20 +139,25 @@ input:-internal-autofill-selected,
 .pallet-buttom:hover > .palet:nth-of-type(1)
 {
   left: 60px;
+  background-color: #C19191;
 }
 .pallet-buttom:hover > .palet:nth-of-type(2)
 {
   left: 90px;
+  background-color: #5C5470;
 }
 .pallet-buttom:hover > .palet:nth-of-type(3)
 {
   left: 120px;
+  background-color: #322F3D;
 }
 .pallet-buttom:hover > .palet:nth-of-type(4)
 {
   left: 150px;
+  background-color: #3B6978;
 }
 .pallet-buttom:hover > .palet:nth-of-type(5)
 {
   left: 180px;
+  background-color: #DFD3D3;
 }

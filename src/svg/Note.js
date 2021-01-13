@@ -1,6 +1,6 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable react/jsx-filename-extension */
 
 import * as React from 'react';
 
