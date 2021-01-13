@@ -6,7 +6,7 @@ type Iprops = {
 };
 
 const Index: React.FC<Iprops> = ({ page }) => {
-    return <div className="py-7 pl-3 rounded-lg  mx-2 edit-list text-left mt-2">{page}</div>;
+    return <div className="py-7 pl-3 rounded-lg  mx-2 edit-list text-left mt-2 w-11/12">{page}</div>;
 };
 
 export default Index;

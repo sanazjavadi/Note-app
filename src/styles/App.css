@@ -13,8 +13,10 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-.border-theme {
+.border-theme-left {
   border-left:1px solid var(--secondaryColor);
+}
+.border-theme-right{
   border-right:1px solid var(--secondaryColor);
 }
 

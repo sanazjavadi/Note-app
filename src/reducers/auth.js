@@ -17,24 +17,23 @@ export const signUp = createAsyncThunk('auth/register',  (data) => {
 
         return response
     
-});
+});  
 
-export const signIn = createAsyncThunk('aut/login',(data)=> {
-  
-
-})
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState: { users: [], error: ''},
+    initialState: { users: null, error: '', token:''},
     reducers: {},
     extraReducers: {
         [signUp.rejected]: (state, action) => {
-            console.log(action.error.message);
+            console.log(action.error.message)
+          return {...state, error:action.error.message}
+           
         },
         [signUp.fulfilled]: (state, action) => {
-            console.log(localStorage.getItem('token'))
-            console.log(action.payload);
+            console.log(action.payload)
+     return {...state, users:action.payload, token:localStorage.getItem('token')}            
+          
         },
     },
 });
