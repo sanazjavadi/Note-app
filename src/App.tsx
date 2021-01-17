@@ -10,13 +10,13 @@ import Auth from './views/Auth';
 
 const App: React.FC = () => {
     const { theme } = useSelector(themeState);
-    const user = useSelector(userState);
-
+    const { token } = useSelector(userState);
+    console.log(token);
     useEffect(() => {
         applyTheme(theme);
     }, [theme]);
 
-    return <div>{user ? <Auth /> : <ProtectedRoutes />}</div>;
+    return <div>{token ? <ProtectedRoutes /> : <Auth />}</div>;
 };
 
 export default App;

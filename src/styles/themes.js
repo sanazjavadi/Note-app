@@ -1,14 +1,14 @@
 export const lightTheme = {
-    '--bg': '#a3d8f4',
-    '--primaryColor': '#7579e7',
-    '--secondaryColor': '#7579e7',
-    '--tertiaryColor': '#b9fffc',
+    '--bg': '#5d5b6a',
+    '--primaryColor': '#cfb495',
+    '--secondaryColor': '#cfb495',
+    '--tertiaryColor': '#758184',
     '--accent': '#ED9C32',
     '--white': '#FFF',
     '--bs1': '0 0 10px 1px rgba(0, 0, 0, 0.1)',
     '--overlay': 'rgba(0, 0, 0, 0.6)',
     '--font': 'Fira Sans',
-    '--ruler': '#7579e7',
+    '--ruler': '#cfb495',
 };
 
 export const darkTheme = {
@@ -78,10 +78,10 @@ export const nordTheme = {
 };
 
 export const draculaTheme = {
-    '--bg': '#282A36',
-    '--primaryColor': '#565583',
-    '--secondaryColor': '#565583',
-    '--tertiaryColor': '#21222C',
+    '--bg': '#393e46',
+    '--primaryColor': '#ef4f4f',
+    '--secondaryColor': '#ef4f4f',
+    '--tertiaryColor': '#222831',
     '--accent': '#FF79C6',
     '--white': '#FFF',
     '--bs1': '0 0 10px 3px rgba(0, 0, 0, 0.2)',

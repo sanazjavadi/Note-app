@@ -10,7 +10,7 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ login }) => {
     const dispatch = useDispatch();
-    const users = useSelector(userState);
+    const { loading } = useSelector(userState);
 
     // form values
     const name = useInput('');
@@ -24,6 +24,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
             name: name.value,
             password: password.value,
         };
+        console.log(data);
         dispatch(signUp(data));
     };
     return (
@@ -44,7 +45,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     value={email.value}
                     onChange={email.onChange}
                     type="text"
-                    placeholder="Email"
+                    placeholder="email"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
                 <input
@@ -64,10 +65,13 @@ const Index: React.FC<Iprops> = ({ login }) => {
 
                 <button
                     type="button"
-                    className="bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out"
+                    disabled
+                    className={`bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
+                        loading && 'opacity-30 cursor-wait'
+                    } `}
                     onClick={() => handlesignUp()}
                 >
-                    Sign Up
+                    sign up
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />

@@ -1,13 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import useInput from '../../../hooks/useInput';
-import { signIn } from '../../../api';
+import { Login } from '../../../reducers/auth';
 
 type Iprops = {
     signup: () => void;
 };
 
 const Index: React.FC<Iprops> = ({ signup }) => {
+    const dispatch = useDispatch();
+
     // form values
     const email = useInput('');
     const password = useInput('');
@@ -17,7 +20,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
             email: email.value,
             password: password.value,
         };
-        signIn(data);
+        dispatch(Login(data));
     };
 
     return (
@@ -52,7 +55,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
             <p className="text-LightPurple text-center mt-5 mb-6 text-bold">
-                You have not account ? // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+                You have not account ?
                 <span
                     role="button"
                     onKeyDown={signup}
