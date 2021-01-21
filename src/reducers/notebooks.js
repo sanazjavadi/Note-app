@@ -2,17 +2,29 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../api';
 
-export const getNoteBooks = createAsyncThunk('get/notebooks', (user_id) => {
+const user = JSON.parse(localStorage.getItem('user'));
+console.log(user);
+export const getNoteBooks = createAsyncThunk('get/notebooks', () => {
     const response = instance
-        .get(`/v1/user/${user_id}/notebooks`)
+        .get(`/v1/user/${user.id}/notebooks`)
         .then((res) => {
-            console.log(res.data.data);
             return res.data.data;
         })
         .catch((err) => {
-            console.log(err.response);
             return err.response || err;
         });
+
+    return response;
+});
+
+export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => {
+    const response = instance
+        .post(`/v1/user/${user.id}/notebooks`, data)
+        .then((res) => {
+            console.log(res.data);
+            return res.data;
+        })
+        .catch((error) => console.log(error.response || error));
 
     return response;
 });
@@ -67,6 +79,10 @@ const notebookSlice = createSlice({
     extraReducers: {
         [getNoteBooks.fulfilled]: (state, action) => {
             return action.payload;
+        },
+        [CreateNoteBook.fulfilled]: (state, action) => {
+            const newState = action.payload;
+            return { ...state, newState };
         },
     },
 });

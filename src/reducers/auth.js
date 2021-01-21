@@ -9,6 +9,7 @@ export const signUp = createAsyncThunk('auth/register', (data) => {
         .post('/v1/auth/register', data)
         .then((res) => {
           localStorage.setItem('token', res.data.token.accessToken)
+        
            return res.data
         
         })
@@ -23,10 +24,15 @@ export const Login = createAsyncThunk('auth/login', (data) => {
 
     const response = instance.post('/v1/auth/login', data)
     .then((res) => {
+        localStorage.setItem('token', res.data.token.accessToken)
+        localStorage.setItem('user', res.data)
         console.log(res)
         return res.data
     })
-    .catch((err) => err.response);
+    .catch((err) =>{
+        console.log(err.response|| response)
+       return err.response
+    });
 
     return response
 })

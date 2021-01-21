@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useWindows from '../../hooks/useWindowsSize';
@@ -9,7 +10,6 @@ import { userState } from '../../reducers/auth';
 // components
 import Modal from '../Modal';
 import AddNewNoteBook from '../AddNotebook';
-import Notebook from '../NoteBook';
 
 // styles
 import styles from './styles/sidebar.module.scss';
@@ -26,12 +26,10 @@ const Index: React.FC = () => {
     const noteBooks = useSelector(notebooksState);
     const { user } = useSelector(userState);
     const size = useWindows();
-    console.log(noteBooks);
     const getNotBookes = () => {
-        dispatch(getNoteBooks(user.id));
+        dispatch(getNoteBooks());
     };
-
-    useEffect(() => getNotBookes());
+    useEffect(() => getNotBookes(), []);
 
     return (
         <>
@@ -50,11 +48,7 @@ const Index: React.FC = () => {
                 </div>
                 <div className="mt-3 notebook-list">
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
-                        {noteBooks.length ? (
-                            noteBooks.map((notebook?: any) => <Notebook notebook={notebook} key={notebook.id} />)
-                        ) : (
-                            <li>No NoteBooks yet</li>
-                        )}
+                        {noteBooks.length ? <li>hi</li> : <li>No NoteBooks yet</li>}
                     </ul>
                 </div>
 

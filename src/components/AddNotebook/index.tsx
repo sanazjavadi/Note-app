@@ -1,8 +1,9 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { closeNotebookModal } from '../../reducers/modal';
-import { addNewNote } from '../../reducers/notebooks';
+import { CreateNoteBook } from '../../reducers/notebooks';
+import { userState } from '../../reducers/auth';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
@@ -10,19 +11,16 @@ import Note from '../../svg/NoteImg';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
-
+    const { user } = useSelector(userState);
     const title = useInput('');
     const addNotebookHandler = (e) => {
         e.preventDefault();
-
         const data = {
-            id: Math.floor(Math.random() * 100),
-            title: title.value,
-            pages: [],
+            name: title.value,
         };
 
         dispatch(closeNotebookModal());
-        dispatch(addNewNote(data));
+        dispatch(CreateNoteBook(data));
         title.setValue('');
     };
 
