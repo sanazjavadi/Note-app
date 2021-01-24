@@ -65,9 +65,8 @@ const Index: React.FC<Iprops> = ({ login }) => {
 
                 <button
                     type="button"
-                    disabled
                     className={`bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
-                        loading && 'opacity-30 cursor-wait'
+                        loading && 'opacity-30 cursor-wait bg-red-100'
                     } `}
                     onClick={() => handlesignUp()}
                 >

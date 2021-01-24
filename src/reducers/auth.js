@@ -8,7 +8,9 @@ export const signUp = createAsyncThunk('auth/register', (data) => {
     instance
         .post('/v1/auth/register', data)
         .then((res) => {
+            
           localStorage.setItem('token', res.data.token.accessToken)
+          localStorage.setItem('user', JSON.stringify(res.data.user))
         
            return res.data
         
@@ -25,7 +27,7 @@ export const Login = createAsyncThunk('auth/login', (data) => {
     const response = instance.post('/v1/auth/login', data)
     .then((res) => {
         localStorage.setItem('token', res.data.token.accessToken)
-        localStorage.setItem('user', res.data)
+        localStorage.setItem('user', JSON.stringify(res.data.user))
         console.log(res)
         return res.data
     })
@@ -38,10 +40,13 @@ export const Login = createAsyncThunk('auth/login', (data) => {
 })
 
 
+const currentToken = localStorage.getItem("token")
+const currentUser = localStorage.getItem("user")
+const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 
 const authSlice = createSlice({
     name: 'auth',
-    initialState: { user: null, error: '', token:'', loading:false},
+    initialState: { user: parsedUser, error: '', token: currentToken, loading:false},
     reducers: {},
     extraReducers: {
         [signUp.pending]: (state) => {

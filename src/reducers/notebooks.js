@@ -2,11 +2,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { instance } from '../api';
 
-const user = JSON.parse(localStorage.getItem('user'));
-console.log(user);
+const user = localStorage.getItem('user');
+
+const parsedUser = user ? JSON.parse(user) : {};
+
 export const getNoteBooks = createAsyncThunk('get/notebooks', () => {
     const response = instance
-        .get(`/v1/user/${user.id}/notebooks`)
+        .get(`/v1/user/${parsedUser.id}/notebooks`)
         .then((res) => {
             return res.data.data;
         })
@@ -19,7 +21,7 @@ export const getNoteBooks = createAsyncThunk('get/notebooks', () => {
 
 export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => {
     const response = instance
-        .post(`/v1/user/${user.id}/notebooks`, data)
+        .post(`/v1/user/${parsedUser.id}/notebooks`, data)
         .then((res) => {
             console.log(res.data);
             return res.data;
