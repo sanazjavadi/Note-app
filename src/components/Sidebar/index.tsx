@@ -10,6 +10,7 @@ import { userState } from '../../reducers/auth';
 // components
 import Modal from '../Modal';
 import AddNewNoteBook from '../AddNotebook';
+import NoteBook from '../NoteBook';
 
 // styles
 import styles from './styles/sidebar.module.scss';
@@ -29,7 +30,7 @@ const Index: React.FC = () => {
     const getNotBookes = () => {
         dispatch(getNoteBooks());
     };
-    useEffect(() => getNotBookes(), []);
+    useEffect(() => getNotBookes(), [noteBooks]);
 
     return (
         <>
@@ -48,7 +49,11 @@ const Index: React.FC = () => {
                 </div>
                 <div className="mt-3 notebook-list">
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
-                        {noteBooks.length ? <li>hi</li> : <li>No NoteBooks yet</li>}
+                        {noteBooks.length ? (
+                            noteBooks.map((notebook) => <NoteBook notebook={notebook} />)
+                        ) : (
+                            <li>No NoteBooks yet</li>
+                        )}
                     </ul>
                 </div>
 

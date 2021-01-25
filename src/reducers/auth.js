@@ -8,10 +8,8 @@ export const signUp = createAsyncThunk('auth/register', (data) => {
     instance
         .post('/v1/auth/register', data)
         .then((res) => {
-            
           localStorage.setItem('token', res.data.token.accessToken)
           localStorage.setItem('user', JSON.stringify(res.data.user))
-        
            return res.data
         
         })
@@ -75,4 +73,4 @@ const authSlice = createSlice({
 });
 
 export const userState = (state) => state.auth;
-export default authSlice.reducer;     
+export default authSlice.reducer;       
