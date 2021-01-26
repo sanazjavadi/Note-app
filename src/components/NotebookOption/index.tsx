@@ -11,6 +11,7 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ id }) => {
     const dispatch = useDispatch();
+
     return (
         <div className="top-5 options-list -left-8 p-4 rounded-lg flex flex-col text-xs font-bold absolute z-10">
             <span className="hover:opacity-50" onClick={() => dispatch(DeleteNoteBook(id))}>

@@ -1,28 +1,31 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { closeNoteModal } from '../../reducers/modal';
-import { addPages } from '../../reducers/notebooks';
+import { createNote } from '../../reducers/notes';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
 
 type Iprops = {
-    id: any;
+    id: number;
+    name: string;
 };
 
-const Index: React.FC<Iprops> = ({ id }) => {
+const Index: React.FC<Iprops> = ({ id, name }) => {
     const dispatch = useDispatch();
     const txtArea = useInput('');
+
     const handleClick = () => {
+        const data = {
+            title: name,
+            data: txtArea.value,
+            description: '',
+        };
         dispatch(closeNoteModal());
-        dispatch(
-            addPages({
-                id,
-                txtArea: txtArea.value,
-            }),
-        );
+        dispatch(createNote(id, data));
     };
 
     return (
@@ -33,7 +36,7 @@ const Index: React.FC<Iprops> = ({ id }) => {
             />
 
             <p className="text-left text-lg text-gray-800">add inside page</p>
-            <p className="text-left text-sm text-gray-800 mt-4 pl-4">add to first</p>
+            <p className="text-left text-sm text-gray-800 mt-4 pl-4">add to {name}</p>
 
             <div className="w-full flex flex-col items-center justify-center">
                 <textarea
