@@ -10,21 +10,18 @@ export const getNotes = createAsyncThunk('get/notes', (NoteBookId) => {
     return instance
         .get(`/v1/user/${parsedUser.id}/notebooks/${NoteBookId}/note`)
         .then((res) => {
-            console.log(res.data);
-            return res.data;
+            return res.data.data;
         })
-        .catch((error) => console.log(error.response || error));
+        .catch((error) => error.response || error);
 });
 
-export const createNote = createAsyncThunk('create/note', (NoteBookId, data) => {
+export const createNote = createAsyncThunk('create/note', (payload) => {
     const response = instance
-        .post(`/v1/user/${parsedUser.id}/notebooks/${NoteBookId}/note`, data)
+        .post(`/v1/user/${parsedUser.id}/notebooks/${payload.id}/note`, payload.data)
         .then((res) => {
-            console.log(res.data);
-            return res.data;
+            return res.data.data;
         })
         .catch((err) => {
-            console.log(err.response || err);
             return err.response || err;
         });
     return response;
@@ -32,13 +29,13 @@ export const createNote = createAsyncThunk('create/note', (NoteBookId, data) => 
 
 const notesSlice = createSlice({
     name: 'notes',
-    initialState: [],
+    initialState: {},
     extraReducers: {
         [getNotes.fulfilled]: (state, action) => {
             return action.payload;
         },
         [createNote.fulfilled]: (state, action) => {
-            state = action.state;
+            return [...state, action.payload];
         },
     },
 });

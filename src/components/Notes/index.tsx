@@ -10,6 +10,7 @@ import SearchIcon from '../../svg/MagnifiyingGlass';
 
 const Index: React.FC = () => {
     const notes = useSelector(notesState);
+
     return (
         <div className="text-center xl:col-span-3 col-span-3 sm:hidden hidden xl:flex flex flex-col items-center border-theme h-screen">
             <div className="p-8 w-full">
@@ -26,7 +27,7 @@ const Index: React.FC = () => {
                     </button>
                 </div>
             </div>
-            {notes.length ? notes.map((note) => <Note note={note} />) : <p>no notes yet</p>}
+            {notes.length > 0 ? notes.map((note) => <Note note={note} />) : <p>no notes yet</p>}
         </div>
     );
 };

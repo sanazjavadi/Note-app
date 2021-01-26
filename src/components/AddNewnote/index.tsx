@@ -20,12 +20,12 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
 
     const handleClick = () => {
         const data = {
-            title: name,
-            data: txtArea.value,
+            title: txtArea.value,
+            data: '',
             description: '',
         };
         dispatch(closeNoteModal());
-        dispatch(createNote(id, data));
+        dispatch(createNote({ id, data }));
     };
 
     return (

@@ -30,7 +30,7 @@ const Index: React.FC = () => {
     const getNotBookes = () => {
         dispatch(getNoteBooks());
     };
-    useEffect(() => getNotBookes(), [noteBooks]);
+    useEffect(() => getNotBookes(), []);
 
     return (
         <>
