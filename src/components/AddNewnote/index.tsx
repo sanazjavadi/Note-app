@@ -1,21 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { closeNoteModal } from '../../reducers/modal';
 import { createNote } from '../../reducers/notes';
+import { notebooksState } from '../../reducers/notebooks';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
 
-type Iprops = {
-    id: number;
-    name: string;
-};
-
-const Index: React.FC<Iprops> = ({ id, name }) => {
+const Index: React.FC = () => {
     const dispatch = useDispatch();
+    const { currentNoteBook } = useSelector(notebooksState);
     const txtArea = useInput('');
 
     const handleClick = () => {
@@ -24,6 +21,7 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
             data: '',
             description: '',
         };
+        const { id } = currentNoteBook;
         dispatch(closeNoteModal());
         dispatch(createNote({ id, data }));
     };
@@ -36,7 +34,7 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
             />
 
             <p className="text-left text-lg text-gray-800">add inside page</p>
-            <p className="text-left text-sm text-gray-800 mt-4 pl-4">add to {name}</p>
+            <p className="text-left text-sm text-gray-800 mt-4 pl-4">add to {currentNoteBook.name}</p>
 
             <div className="w-full flex flex-col items-center justify-center">
                 <textarea

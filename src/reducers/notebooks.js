@@ -47,7 +47,10 @@ export const DeleteNoteBook = createAsyncThunk('delete/notebook', (NoteBookId) =
 
 const notebookSlice = createSlice({
     name: 'notebooks',
-    initialState: [],
+    initialState: {
+        notebooks: [],
+        currentNoteBook: { name: '', id: null },
+    },
     reducers: {
         duplicateNote: (state, action) => {
             const duplicate = state.find((note) => note._id === action.payload);
@@ -56,17 +59,23 @@ const notebookSlice = createSlice({
                 name: `copy of (${duplicate.name})`,
             });
         },
+        setCurrentNoteBookId: (state, action) => {
+            return {
+                ...state,
+                currentNoteBook: { ...state.currentNoteBook, name: action.payload.name, id: action.payload.id },
+            };
+        },
     },
     extraReducers: {
         [getNoteBooks.fulfilled]: (state, action) => {
-            return action.payload;
+            return { ...state, notebooks: action.payload };
         },
         [CreateNoteBook.fulfilled]: (state, action) => {
-            return [...state, action.payload];
+            return { ...state, notebooks: [...state.notebooks, action.payload] };
         },
     },
 });
 
-export const { duplicateNote } = notebookSlice.actions;
+export const { duplicateNote, setCurrentNoteBookId } = notebookSlice.actions;
 export const notebooksState = (state) => state.notebooks;
 export default notebookSlice.reducer;

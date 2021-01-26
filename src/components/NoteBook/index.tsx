@@ -7,6 +7,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openNoteModal, modalState } from '../../reducers/modal';
 import { getNotes } from '../../reducers/notes';
+import { setCurrentNoteBookId } from '../../reducers/notebooks';
 
 // components
 import NotebookOption from '../NotebookOption';
@@ -31,6 +32,7 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
 
     const addNotebookHandler = () => {
         dispatch(openNoteModal());
+        dispatch(setCurrentNoteBookId({ id: _id, name }));
     };
     return (
         <>
@@ -52,7 +54,7 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
             </li>
             {noteModal && (
                 <Modal>
-                    <AddNewnote id={_id} name={name} />
+                    <AddNewnote />
                 </Modal>
             )}
         </>

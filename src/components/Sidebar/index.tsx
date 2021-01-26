@@ -24,7 +24,7 @@ import PalletIcon from '../../svg/Pallete';
 const Index: React.FC = () => {
     const dispatch = useDispatch();
     const { notebookModal } = useSelector(modalState);
-    const noteBooks = useSelector(notebooksState);
+    const { notebooks } = useSelector(notebooksState);
     const { user } = useSelector(userState);
     const size = useWindows();
     const getNotBookes = () => {
@@ -49,8 +49,8 @@ const Index: React.FC = () => {
                 </div>
                 <div className="mt-3 notebook-list">
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
-                        {noteBooks.length ? (
-                            noteBooks.map((notebook) => <NoteBook notebook={notebook} />)
+                        {notebooks.length ? (
+                            notebooks.map((notebook) => <NoteBook notebook={notebook} />)
                         ) : (
                             <li>No NoteBooks yet</li>
                         )}
