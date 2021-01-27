@@ -159,3 +159,25 @@ input:-internal-autofill-selected,
   left: 180px;
   background-color: #DFD3D3;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width:3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--primaryColor);; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:var(--primaryColor);; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primaryColor);; 
+}

@@ -31,11 +31,9 @@ export const DeleteNote = createAsyncThunk('delete/note', (NoteId) => {
     const response = instance
         .delete(`/v1/user/${parsedUser.id}/note/${NoteId}`)
         .then((res) => {
-            console.log(res);
             return res.data.data;
         })
         .catch((err) => {
-            console.log(err.response);
             return err.response || err;
         });
     return response;
@@ -43,13 +41,19 @@ export const DeleteNote = createAsyncThunk('delete/note', (NoteId) => {
 
 const notesSlice = createSlice({
     name: 'notes',
-    initialState: {},
+    initialState: {
+        notes: [],
+        loading: false,
+    },
     extraReducers: {
+        [getNotes.pending]: (state) => {
+            return { ...state, loading: true };
+        },
         [getNotes.fulfilled]: (state, action) => {
-            return action.payload;
+            return { ...state, loading: false, notes: action.payload };
         },
         [createNote.fulfilled]: (state, action) => {
-            return [...state, action.payload];
+            return { ...state, loading: false, notes: [...state.notes, action.payload] };
         },
     },
 });

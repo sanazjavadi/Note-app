@@ -3,8 +3,16 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { DeleteNote } from '../../reducers/notes';
+
 // assets
 import Cancel from '../../svg/Cancel';
+
+type Iprops = {
+    note: {
+        _id: number;
+        title: string;
+    };
+};
 
 const Index: React.FC<Iprops> = ({ note }) => {
     const dispatch = useDispatch();

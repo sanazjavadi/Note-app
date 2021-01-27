@@ -1,7 +1,5 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -29,9 +27,6 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
 
     const addNotebookHandler = () => {
         dispatch(openNoteModal());
-    };
-    const getNotBookHandler = () => {
-        dispatch(getNotes(_id));
         dispatch(setCurrentNoteBookId({ id: _id, name }));
     };
     return (
@@ -39,14 +34,22 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
             <li
                 key={_id}
                 className="mt-2 py-3 px-3 relative rounded-lg transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500"
-                onClick={getNotBookHandler}
             >
-                {name}
+                <span
+                    className="w-full"
+                    role="button"
+                    tabIndex={-1}
+                    onKeyDown={() => dispatch(getNotes(_id))}
+                    onClick={() => dispatch(getNotes(_id))}
+                >
+                    {name}
+                </span>
+
                 <div className="flex items-center relative ">
                     <span className="options">
                         <MenuIcon className="w-4 h-4 app-svg mr-2 hover:opacity-50" />
                         <div className="notebook-options">
-                            <NotebookOption id={_id} />
+                            <NotebookOption id={_id} name={name} />
                         </div>
                     </span>
                     <PlusIcon className="w-4 h-4 app-svg  hover:opacity-50" onClick={addNotebookHandler} />

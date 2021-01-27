@@ -27,22 +27,22 @@ const Index: React.FC = () => {
     return (
         <div className="relative mx-auto md:w-5/12 lg:h-5/12  xl:w-3/12 sm:w-6/12 w-9/12 bg-white z-11 mt-32 rounded-2xl pb-6 ">
             <CloseIcon
-                className="w-5 h-5 absolute right-5 top-5 cursor-pointer"
+                className="w-3 h-3 absolute right-5 top-5 cursor-pointer"
                 onClick={() => dispatch(closeNotebookModal())}
             />
 
-            <div className="flex items-center justify-between">
+            {/* <div className="flex items-center justify-between">
                 <div className="mb-5 w-7/12 h-16 relative">
                     <div className="absolute  -top-6 left-7 ">
                         <Note className="app-svg" />
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div className="w-full flex flex-col items-center justify-center">
+            <div className="w-full flex flex-col items-center justify-center pt-5">
                 <input
                     type="text"
-                    placeholder="add New Note"
+                    placeholder="add New Notebook"
                     className="py-3 px-4 w-10/12 rounded-full mt-8 app-input focus:outline-none"
                     value={title.value}
                     onChange={title.onChange}

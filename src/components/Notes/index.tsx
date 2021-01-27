@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { notesState } from '../../reducers/notes';
@@ -7,14 +8,15 @@ import Note from '../Note';
 
 // assets
 import SearchIcon from '../../svg/MagnifiyingGlass';
+import Loading from '../../svg/Loading';
 
 const Index: React.FC = () => {
-    const notes = useSelector(notesState);
+    const { notes, loading } = useSelector(notesState);
 
     return (
         <div className="text-center xl:col-span-3 col-span-3 sm:hidden hidden xl:flex flex flex-col items-center border-theme h-screen">
             <div className="p-8 w-full">
-                <div className="flex items-center rounded-3xl  rounded-full relative ">
+                <div className="flex items-center rounded-3xl  relative ">
                     <input
                         className="focus:outline-none  app-input  w-full rounded-full py-3 px-6 "
                         id="search"
@@ -27,7 +29,17 @@ const Index: React.FC = () => {
                     </button>
                 </div>
             </div>
-            {notes.length > 0 ? notes.map((note) => <Note note={note} />) : <p>no notes yet</p>}
+            {!loading ? (
+                notes.length ? (
+                    notes.map((note?: any) => <Note note={note} />)
+                ) : (
+                    <div className="mt-5">No Notes Yet !</div>
+                )
+            ) : (
+                <div>
+                    <Loading className="app-svg" />
+                </div>
+            )}
         </div>
     );
 };

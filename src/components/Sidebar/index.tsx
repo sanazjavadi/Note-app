@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,11 +23,12 @@ import Avatar from '../../svg/User';
 import AddIcon from '../../svg/Add';
 import SignOutIcon from '../../svg/SignOut';
 import PalletIcon from '../../svg/Pallete';
+import Loading from '../../svg/Loading';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
     const { notebookModal, noteModal, editModal } = useSelector(modalState);
-    const { notebooks } = useSelector(notebooksState);
+    const { notebooks, loading } = useSelector(notebooksState);
     const { user } = useSelector(userState);
     const size = useWindows();
     const getNotBookes = () => {
@@ -39,7 +41,7 @@ const Index: React.FC = () => {
             <div
                 className={`${styles['bg-sidebar']} ${
                     size > 900
-                        ? 'xl:col-span-2 lg:col-span-3 sm:col-span-3 flex h-screen flex flex-col border-theme'
+                        ? 'xl:col-span-2 lg:col-span-3 sm:col-span-3  h-screen flex flex-col border-theme'
                         : styles.mobileSide
                 }`}
             >
@@ -49,12 +51,20 @@ const Index: React.FC = () => {
                     </div>
                     <p className="font-momo text-base text-center mt-2">{user.name}</p>
                 </div>
-                <div className="mt-3 notebook-list">
+                <div className="mt-3 notebook-list overflow-y-auto h-3/5">
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
-                        {notebooks.length ? (
-                            notebooks.map((notebook) => <NoteBook notebook={notebook} />)
+                        {!loading ? (
+                            notebooks.length ? (
+                                notebooks.map((notebook) => <NoteBook notebook={notebook} />)
+                            ) : (
+                                <div className="w-full flex justify-center items-center text-xs">
+                                    You have no Notebook yet !
+                                </div>
+                            )
                         ) : (
-                            <li>No NoteBooks yet</li>
+                            <div className="w-full flex justify-center items-center">
+                                <Loading className="app-svg" />
+                            </div>
                         )}
                     </ul>
                 </div>

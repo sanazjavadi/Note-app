@@ -1,6 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 import { instance } from '../api';
 
 const user = localStorage.getItem('user');
@@ -39,7 +40,7 @@ export const UpdateNoteBook = createAsyncThunk('update/notebook', (data, { getSt
         .then((res) => {
             return res.data.data;
         })
-        .catch((error) => console.log(error.response || error));
+        .catch((error) => error.response || error);
 });
 
 export const DeleteNoteBook = createAsyncThunk('delete/notebook', (NoteBookId) => {
@@ -59,15 +60,13 @@ const notebookSlice = createSlice({
     name: 'notebooks',
     initialState: {
         notebooks: [],
+        loading: false,
         currentNoteBook: { name: '', id: null },
     },
     reducers: {
         duplicateNote: (state, action) => {
-            const duplicate = state.find((note) => note._id === action.payload);
-            state = state.push({
-                id: duplicate._id + 1,
-                name: `copy of (${duplicate.name})`,
-            });
+            const duplicate = state.notebooks.find((note) => note._id === action.payload);
+            state = state.notebooks.push({ ...duplicate, name: `copy of (${duplicate.name})` });
         },
         setCurrentNoteBookId: (state, action) => {
             return {
@@ -77,8 +76,11 @@ const notebookSlice = createSlice({
         },
     },
     extraReducers: {
+        [getNoteBooks.pending]: (state) => {
+            return { ...state, loading: true };
+        },
         [getNoteBooks.fulfilled]: (state, action) => {
-            return { ...state, notebooks: action.payload };
+            return { ...state, loading: false, notebooks: action.payload };
         },
         [CreateNoteBook.fulfilled]: (state, action) => {
             return { ...state, notebooks: [...state.notebooks, action.payload] };
@@ -87,13 +89,10 @@ const notebookSlice = createSlice({
             const newNoteBook = action.payload;
             const updatedNoteBooks = state.notebooks.map((noteBook) => {
                 if (noteBook._id === action.payload._id) {
-                    console.log(action.payload);
                     return newNoteBook;
                 }
-                console.log(noteBook);
                 return noteBook;
             });
-            console.log(updatedNoteBooks);
             return { ...state, notebooks: updatedNoteBooks };
         },
     },
