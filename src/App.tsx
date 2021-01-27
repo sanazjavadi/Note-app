@@ -11,7 +11,6 @@ import Auth from './views/Auth';
 const App: React.FC = () => {
     const { theme } = useSelector(themeState);
     const { token } = useSelector(userState);
-    console.log(token);
     useEffect(() => {
         applyTheme(theme);
     }, [theme]);

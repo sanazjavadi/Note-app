@@ -26,13 +26,10 @@ export const Login = createAsyncThunk('auth/login', (data) => {
     .then((res) => {
         localStorage.setItem('token', res.data.token.accessToken)
         localStorage.setItem('user', JSON.stringify(res.data.user))
-        console.log(res)
         return res.data
     })
-    .catch((err) =>{
-        console.log(err.response|| response)
-       return err.response
-    });
+    .catch((err) => err.response
+    );
 
     return response
 })
@@ -45,7 +42,13 @@ const parsedUser = currentUser ? JSON.parse(currentUser) : null;
 const authSlice = createSlice({
     name: 'auth',
     initialState: { user: parsedUser, error: '', token: currentToken, loading:false},
-    reducers: {},
+    reducers: {
+        signOut: (state) => {
+            localStorage.removeItem('token')
+            localStorage.removeItem('user')
+            return {...state, token:null}
+        }
+    },
     extraReducers: {
         [signUp.pending]: (state) => {
             return {...state, loading:true}
@@ -73,4 +76,5 @@ const authSlice = createSlice({
 });
 
 export const userState = (state) => state.auth;
+export const { signOut } = authSlice.actions
 export default authSlice.reducer;       

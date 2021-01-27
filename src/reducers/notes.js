@@ -27,6 +27,20 @@ export const createNote = createAsyncThunk('create/note', (payload) => {
     return response;
 });
 
+export const DeleteNote = createAsyncThunk('delete/note', (NoteId) => {
+    const response = instance
+        .delete(`/v1/user/${parsedUser.id}/note/${NoteId}`)
+        .then((res) => {
+            console.log(res);
+            return res.data.data;
+        })
+        .catch((err) => {
+            console.log(err.response);
+            return err.response || err;
+        });
+    return response;
+});
+
 const notesSlice = createSlice({
     name: 'notes',
     initialState: {},

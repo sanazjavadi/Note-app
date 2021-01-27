@@ -38,6 +38,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     value={name.value}
                     onChange={name.onChange}
                     type="text"
+                    autoComplete="false"
                     placeholder="Name"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none"
                 />
@@ -45,6 +46,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     value={email.value}
                     onChange={email.onChange}
                     type="text"
+                    autoComplete="false"
                     placeholder="email"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
@@ -52,12 +54,14 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     value={password.value}
                     onChange={password.onChange}
                     type="password"
+                    autoComplete="false"
                     placeholder="Password"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
                 <input
                     value={secondPass.value}
                     onChange={secondPass.onChange}
+                    autoComplete="false"
                     type="password"
                     placeholder="Password again"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"

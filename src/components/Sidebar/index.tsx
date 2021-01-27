@@ -5,7 +5,7 @@ import useWindows from '../../hooks/useWindowsSize';
 import { changeTheme } from '../../reducers/theme';
 import { modalState, openNotebookModal } from '../../reducers/modal';
 import { notebooksState, getNoteBooks } from '../../reducers/notebooks';
-import { userState } from '../../reducers/auth';
+import { userState, signOut } from '../../reducers/auth';
 
 // components
 import Modal from '../Modal';
@@ -82,7 +82,7 @@ const Index: React.FC = () => {
                     >
                         <SignOutIcon
                             className="w-7 h-7 cursor-pointer app-svg mb-3"
-                            onClick={() => localStorage.removeItem('token')}
+                            onClick={() => dispatch(signOut())}
                         />
                         <AddIcon
                             className="w-9 h-9 cursor-pointer app-svg mb-3 "

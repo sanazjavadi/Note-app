@@ -83,6 +83,7 @@ input:-internal-autofill-selected,
   background-color: var(--tertiaryColor) !important;
   color: var(--primaryColor) !important;
   border:1px solid var(--tertiaryColor);
+  
 }
 
 
