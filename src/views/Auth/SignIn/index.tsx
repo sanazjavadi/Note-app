@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
-import { Login } from '../../../reducers/auth';
+import { Login, userState } from '../../../reducers/auth';
+
+// assets
+import Loading from '../../../svg/Loading';
 
 type Iprops = {
     signup: () => void;
@@ -10,7 +13,7 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ signup }) => {
     const dispatch = useDispatch();
-
+    const { loading } = useSelector(userState);
     // form values
     const email = useInput('');
     const password = useInput('');
@@ -50,7 +53,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                     className="bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out"
                     onClick={handlesignIn}
                 >
-                    Login{' '}
+                    Login {loading && <Loading className="w-16 h-16 fill-white" />}
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
