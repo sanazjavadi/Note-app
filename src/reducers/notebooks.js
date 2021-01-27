@@ -32,6 +32,16 @@ export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => {
     return response;
 });
 
+export const UpdateNoteBook = createAsyncThunk('update/notebook', (data, { getState }) => {
+    const { currentNoteBook } = getState().notebooks;
+    return instance
+        .put(`/v1/user/${parsedUser.id}/notebooks/${currentNoteBook.id}`, data)
+        .then((res) => {
+            return res.data.data;
+        })
+        .catch((error) => console.log(error.response || error));
+});
+
 export const DeleteNoteBook = createAsyncThunk('delete/notebook', (NoteBookId) => {
     const response = instance
         .delete(`/v1/user/${parsedUser.id}/notebooks/${NoteBookId}`)
@@ -72,6 +82,19 @@ const notebookSlice = createSlice({
         },
         [CreateNoteBook.fulfilled]: (state, action) => {
             return { ...state, notebooks: [...state.notebooks, action.payload] };
+        },
+        [UpdateNoteBook.fulfilled]: (state, action) => {
+            const newNoteBook = action.payload;
+            const updatedNoteBooks = state.notebooks.map((noteBook) => {
+                if (noteBook._id === action.payload._id) {
+                    console.log(action.payload);
+                    return newNoteBook;
+                }
+                console.log(noteBook);
+                return noteBook;
+            });
+            console.log(updatedNoteBooks);
+            return { ...state, notebooks: updatedNoteBooks };
         },
     },
 });

@@ -10,6 +10,8 @@ import { userState, signOut } from '../../reducers/auth';
 // components
 import Modal from '../Modal';
 import AddNewNoteBook from '../AddNotebook';
+import AddNewnote from '../AddNewnote';
+import EditModal from '../EditNoteBook';
 import NoteBook from '../NoteBook';
 
 // styles
@@ -23,7 +25,7 @@ import PalletIcon from '../../svg/Pallete';
 
 const Index: React.FC = () => {
     const dispatch = useDispatch();
-    const { notebookModal } = useSelector(modalState);
+    const { notebookModal, noteModal, editModal } = useSelector(modalState);
     const { notebooks } = useSelector(notebooksState);
     const { user } = useSelector(userState);
     const size = useWindows();
@@ -94,6 +96,16 @@ const Index: React.FC = () => {
                 {notebookModal && (
                     <Modal>
                         <AddNewNoteBook />
+                    </Modal>
+                )}
+                {noteModal && (
+                    <Modal>
+                        <AddNewnote />
+                    </Modal>
+                )}
+                {editModal && (
+                    <Modal>
+                        <EditModal />
                     </Modal>
                 )}
             </div>

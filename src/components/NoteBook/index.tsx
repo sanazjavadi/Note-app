@@ -4,15 +4,13 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { openNoteModal, modalState } from '../../reducers/modal';
+import { useDispatch } from 'react-redux';
+import { openNoteModal } from '../../reducers/modal';
 import { getNotes } from '../../reducers/notes';
 import { setCurrentNoteBookId } from '../../reducers/notebooks';
 
 // components
 import NotebookOption from '../NotebookOption';
-import AddNewnote from '../AddNewnote';
-import Modal from '../Modal';
 
 // assets
 import PlusIcon from '../../svg/Plus';
@@ -27,11 +25,13 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ notebook }) => {
     const { _id, name } = notebook;
-    const { noteModal } = useSelector(modalState);
     const dispatch = useDispatch();
 
     const addNotebookHandler = () => {
         dispatch(openNoteModal());
+    };
+    const getNotBookHandler = () => {
+        dispatch(getNotes(_id));
         dispatch(setCurrentNoteBookId({ id: _id, name }));
     };
     return (
@@ -39,7 +39,7 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
             <li
                 key={_id}
                 className="mt-2 py-3 px-3 relative rounded-lg transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500"
-                onClick={() => dispatch(getNotes(_id))}
+                onClick={getNotBookHandler}
             >
                 {name}
                 <div className="flex items-center relative ">
@@ -52,11 +52,6 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
                     <PlusIcon className="w-4 h-4 app-svg  hover:opacity-50" onClick={addNotebookHandler} />
                 </div>
             </li>
-            {noteModal && (
-                <Modal>
-                    <AddNewnote />
-                </Modal>
-            )}
         </>
     );
 };

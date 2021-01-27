@@ -5,6 +5,7 @@ const modalSlice = createSlice({
     initialState: {
         noteModal: false,
         notebookModal: false,
+        editModal: false,
     },
     reducers: {
         openNoteModal(state) {
@@ -19,9 +20,22 @@ const modalSlice = createSlice({
         closeNotebookModal(state) {
             return { ...state, notebookModal: false };
         },
+        openEditModal(state) {
+            return { ...state, editModal: true };
+        },
+        closeEditModal(state) {
+            return { ...state, editModal: false };
+        },
     },
 });
 
-export const { openNoteModal, closeNoteModal, openNotebookModal, closeNotebookModal } = modalSlice.actions;
+export const {
+    openNoteModal,
+    closeNoteModal,
+    openNotebookModal,
+    closeNotebookModal,
+    openEditModal,
+    closeEditModal,
+} = modalSlice.actions;
 export const modalState = (state) => state.modal;
 export default modalSlice.reducer;

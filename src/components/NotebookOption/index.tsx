@@ -4,7 +4,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { DeleteNoteBook, duplicateNote } from '../../reducers/notebooks';
-import { openNotebookModal } from '../../reducers/modal';
+import { openEditModal } from '../../reducers/modal';
 
 type Iprops = {
     id: number;
@@ -12,9 +12,7 @@ type Iprops = {
 
 const Index: React.FC<Iprops> = ({ id }) => {
     const dispatch = useDispatch();
-    const handleRenameNotebook = () => {
-        dispatch(openNotebookModal());
-    };
+
     return (
         <div className="top-5 options-list -left-8 p-4 rounded-lg flex flex-col text-xs font-bold absolute z-10">
             <span className="hover:opacity-50" onClick={() => dispatch(DeleteNoteBook(id))}>
@@ -29,7 +27,7 @@ const Index: React.FC<Iprops> = ({ id }) => {
             >
                 Copy link
             </div>
-            <div className="mt-3 hover:opacity-50" onClick={handleRenameNotebook}>
+            <div className="mt-3 hover:opacity-50" onClick={() => dispatch(openEditModal())}>
                 Rename
             </div>
         </div>
