@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
 import { signUp, userState } from '../../../reducers/auth';
 
+// assets
+import Loading from '../../../svg/Loading';
+
 type Iprops = {
     login: () => void;
 };
@@ -24,7 +27,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
             name: name.value,
             password: password.value,
         };
-        console.log(data);
+
         dispatch(signUp(data));
     };
     return (
@@ -69,12 +72,12 @@ const Index: React.FC<Iprops> = ({ login }) => {
 
                 <button
                     type="button"
-                    className={`bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
+                    className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
                         loading && 'opacity-30 cursor-wait bg-red-100'
                     } `}
                     onClick={() => handlesignUp()}
                 >
-                    sign up
+                    {loading ? <Loading className="w-16 h-16 fill-current text-white " /> : 'sign up'}
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />

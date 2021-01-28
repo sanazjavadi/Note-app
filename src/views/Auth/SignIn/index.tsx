@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +15,7 @@ type Iprops = {
 const Index: React.FC<Iprops> = ({ signup }) => {
     const dispatch = useDispatch();
     const { loading } = useSelector(userState);
+
     // form values
     const email = useInput('');
     const password = useInput('');
@@ -50,10 +52,12 @@ const Index: React.FC<Iprops> = ({ signup }) => {
 
                 <button
                     type="button"
-                    className="bg-LightPurple text-white py-4 w-full my-5 rounded-2xl hover:opacity-80 transition duration-300 ease-in-out"
+                    className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
+                        loading && 'opacity-30 cursor-wait bg-red-100'
+                    } `}
                     onClick={handlesignIn}
                 >
-                    Login {loading && <Loading className="w-16 h-16 fill-white" />}
+                    {loading ? <Loading className="w-16 h-16 fill-current text-white absolute" /> : 'Login'}
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
