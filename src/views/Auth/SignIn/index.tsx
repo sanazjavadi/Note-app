@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
 import { Login, userState } from '../../../reducers/auth';
+import validate from '../../../utils/validateInfo';
 
 // assets
 import Loading from '../../../svg/Loading';
@@ -13,6 +14,7 @@ type Iprops = {
 };
 
 const Index: React.FC<Iprops> = ({ signup }) => {
+    const [errors, setErrors] = useState({});
     const dispatch = useDispatch();
     const { loading } = useSelector(userState);
 
@@ -25,7 +27,10 @@ const Index: React.FC<Iprops> = ({ signup }) => {
             email: email.value,
             password: password.value,
         };
-        dispatch(Login(data));
+        setErrors(validate(data));
+        if (Object.keys(errors).length === 0) {
+            dispatch(Login(data));
+        }
     };
 
     return (
@@ -34,7 +39,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                 <span className="text-xl">Login</span>
             </div>
             <hr className="h-2 w-full opacity-10" />
-            <form className="w-10/12 mt-7">
+            <form className="w-10/12 mt-7" onSubmit={handlesignIn}>
                 <input
                     value={email.value}
                     onChange={email.onChange}
@@ -42,6 +47,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                     placeholder="Email"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
+                {errors.email && <small className="ml-3 text-red-600">{errors.email}</small>}
                 <input
                     value={password.value}
                     onChange={password.onChange}
@@ -49,13 +55,12 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                     placeholder="Password"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
-
+                {errors.password && <small className="ml-3 text-red-600">{errors.password}</small>}
                 <button
-                    type="button"
+                    type="submit"
                     className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
                         loading && 'opacity-30 cursor-wait bg-red-100'
                     } `}
-                    onClick={handlesignIn}
                 >
                     {loading ? <Loading className="w-16 h-16 fill-current text-white absolute" /> : 'Login'}
                 </button>
