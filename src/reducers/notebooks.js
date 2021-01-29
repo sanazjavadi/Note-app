@@ -1,60 +1,23 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { stat } from 'fs';
-import { instance } from '../api';
+import {
+    getNotebooksService,
+    createNotebookService,
+    updateNotebookService,
+    deleteNotebokService,
+} from '../service/api/notebook';
 
-const user = localStorage.getItem('user');
-const parsedUser = user ? JSON.parse(user) : {};
+export const getNoteBooks = createAsyncThunk('get/notebooks', () => getNotebooksService());
 
-export const getNoteBooks = createAsyncThunk('get/notebooks', () => {
-    const response = instance
-        .get(`/v1/user/${parsedUser.id}/notebooks`)
-        .then((res) => {
-            return res.data.data;
-        })
-        .catch((err) => {
-            return err.response || err;
-        });
-
-    return response;
-});
-
-export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => {
-    const response = instance
-        .post(`/v1/user/${parsedUser.id}/notebooks`, data)
-        .then((res) => {
-            return res.data.data;
-        })
-        .catch((error) => {
-            return error.response || error;
-        });
-
-    return response;
-});
+export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => createNotebookService(data));
 
 export const UpdateNoteBook = createAsyncThunk('update/notebook', (data, { getState }) => {
     const { currentNoteBook } = getState().notebooks;
-    return instance
-        .put(`/v1/user/${parsedUser.id}/notebooks/${currentNoteBook.id}`, data)
-        .then((res) => {
-            return res.data.data;
-        })
-        .catch((error) => error.response || error);
+    return updateNotebookService(data, currentNoteBook);
 });
 
-export const DeleteNoteBook = createAsyncThunk('delete/notebook', (NoteBookId) => {
-    const response = instance
-        .delete(`/v1/user/${parsedUser.id}/notebooks/${NoteBookId}`)
-        .then((res) => {
-            return res.data;
-        })
-        .catch((err) => {
-            return err.response || err;
-        });
-
-    return response;
-});
+export const DeleteNoteBook = createAsyncThunk('delete/notebook', (NoteBookId) => deleteNotebokService(NoteBookId));
 
 const notebookSlice = createSlice({
     name: 'notebooks',
