@@ -6,6 +6,9 @@ import useInput from '../../../hooks/useInput';
 import { Login, userState } from '../../../reducers/auth';
 import validate from '../../../utils/validateInfo';
 
+// components
+import Input from '../../../components/Input';
+
 // assets
 import Loading from '../../../svg/Loading';
 
@@ -22,15 +25,14 @@ const Index: React.FC<Iprops> = ({ signup }) => {
     const email = useInput('');
     const password = useInput('');
 
-    const handlesignIn = () => {
+    const handlesignIn = (e) => {
+        e.preventDefault();
         const data = {
             email: email.value,
             password: password.value,
         };
         setErrors(validate(data));
-        if (Object.keys(errors).length === 0) {
-            dispatch(Login(data));
-        }
+        dispatch(Login(data));
     };
 
     return (
@@ -39,23 +41,24 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                 <span className="text-xl">Login</span>
             </div>
             <hr className="h-2 w-full opacity-10" />
-            <form className="w-10/12 mt-7" onSubmit={handlesignIn}>
-                <input
+            <form className="w-10/12 mt-7" onSubmit={(e) => handlesignIn(e)}>
+                <Input
                     value={email.value}
                     onChange={email.onChange}
                     type="text"
+                    error={errors.email}
                     placeholder="Email"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
-                {errors.email && <small className="ml-3 text-red-600">{errors.email}</small>}
-                <input
+
+                <Input
                     value={password.value}
                     onChange={password.onChange}
+                    error={errors.password}
                     type="password"
                     placeholder="Password"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
-                {errors.password && <small className="ml-3 text-red-600">{errors.password}</small>}
                 <button
                     type="submit"
                     className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${

@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
 import { signUp, userState } from '../../../reducers/auth';
 import validate from '../../../utils/validateInfo';
+
+// components
+import Input from '../../../components/Input';
 
 // assets
 import Loading from '../../../svg/Loading';
@@ -21,14 +25,17 @@ const Index: React.FC<Iprops> = ({ login }) => {
     const name = useInput('');
     const email = useInput('');
     const password = useInput('');
+    const data = {
+        email: email.value,
+        name: name.value,
+        password: password.value,
+    };
+    // useEffect(() => {
+    //     setErrors(validate(data));
+    // }, []);
 
     const handlesignUp = (e) => {
         e.preventDefault();
-        const data = {
-            email: email.value,
-            name: name.value,
-            password: password.value,
-        };
         setErrors(validate(data));
         if (Object.keys(errors).length === 0) {
             dispatch(signUp(data));
@@ -41,36 +48,31 @@ const Index: React.FC<Iprops> = ({ login }) => {
             </div>
             <hr className="h-2 w-full opacity-10" />
             <form className="w-10/12 mt-7" onSubmit={(e) => handlesignUp(e)}>
-                <input
+                <Input
                     value={name.value}
                     onChange={name.onChange}
-                    onBlur={name.onChange}
                     type="text"
-                    autoComplete="false"
+                    error={errors.name}
                     placeholder="Name"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none"
                 />
-                {errors.name && <small className="ml-3 text-red-600">{errors.name}</small>}
-                <input
+                <Input
                     value={email.value}
                     onChange={email.onChange}
-                    onBlur={email.onChange}
                     type="text"
-                    autoComplete="false"
+                    error={errors.email}
                     placeholder="Email"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
-                {errors.email && <small className="ml-3 text-red-600">{errors.email}</small>}
-                <input
+                <Input
                     value={password.value}
                     onChange={password.onChange}
-                    onBlur={password.onChange}
+                    error={errors.password}
                     type="password"
-                    autoComplete="false"
                     placeholder="Password"
                     className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
-                {errors.password && <small className="ml-3 text-red-600">{errors.password}</small>}
+
                 <button
                     type="submit"
                     className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${

@@ -8,9 +8,7 @@ export const signUp = createAsyncThunk('auth/register', (data) => {
     instance
         .post('/v1/auth/register', data)
         .then((res) => {
-       
-            
-    localStorage.setItem('token', res.data.token.accessToken)
+           localStorage.setItem('token', res.data.token.accessToken)
           localStorage.setItem('user', JSON.stringify(res.data.user))
            return res.data
                     })
