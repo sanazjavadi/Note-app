@@ -2,21 +2,21 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
     lightTheme,
     darkTheme,
-    solarizedDarkTheme,
-    solarizedLightTheme,
-    gruvboxDarkTheme,
-    nordTheme,
-    draculaTheme,
+    halloweenTheme,
+    VintageTheme,
+    retroTheme,
+    coldTheme,
+    warmTheme,
 } from '../styles/themes';
 
 const themes = {
     lightTheme,
     darkTheme,
-    solarizedDarkTheme,
-    solarizedLightTheme,
-    gruvboxDarkTheme,
-    nordTheme,
-    draculaTheme,
+    halloweenTheme,
+    VintageTheme,
+    retroTheme,
+    coldTheme,
+    warmTheme,
 };
 
 const localSt = localStorage.getItem('themePreference');
@@ -24,7 +24,7 @@ const localSt = localStorage.getItem('themePreference');
 const themeSlice = createSlice({
     name: 'theme',
     initialState: {
-        themes: ['light', 'dark', 'solarizedDark', 'solarizedLight', 'gruvboxDark', 'nord', 'dracula'],
+        themes: ['light', 'dark', 'halloween', 'Vintage', 'retro', 'cold', 'warm'],
         current: localSt || 'dark',
         theme: localSt ? themes[`${localSt}Theme`] : darkTheme,
     },
@@ -40,29 +40,29 @@ const themeSlice = createSlice({
                 case 'dark':
                     localStorage.setItem('themePreference', theme);
                     return { ...state, current: theme, theme: darkTheme };
-                case 'dracula':
+                case 'warm':
                     localStorage.setItem('themePreference', theme);
-                    return { ...state, current: theme, theme: draculaTheme };
-                case 'solarizedDark':
-                    localStorage.setItem('themePreference', theme);
-                    return {
-                        ...state,
-                        current: theme,
-                        theme: solarizedDarkTheme,
-                    };
-                case 'solarizedLight':
+                    return { ...state, current: theme, theme: warmTheme };
+                case 'halloween':
                     localStorage.setItem('themePreference', theme);
                     return {
                         ...state,
                         current: theme,
-                        theme: solarizedLightTheme,
+                        theme: halloweenTheme,
                     };
-                case 'gruvboxDark':
+                case 'Vintage':
                     localStorage.setItem('themePreference', theme);
-                    return { ...state, current: theme, theme: gruvboxDarkTheme };
-                case 'nord':
+                    return {
+                        ...state,
+                        current: theme,
+                        theme: VintageTheme,
+                    };
+                case 'retro':
                     localStorage.setItem('themePreference', theme);
-                    return { ...state, current: theme, theme: nordTheme };
+                    return { ...state, current: theme, theme: retroTheme };
+                case 'cold':
+                    localStorage.setItem('themePreference', theme);
+                    return { ...state, current: theme, theme: coldTheme };
                 default:
                     return state;
             }

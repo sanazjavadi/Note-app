@@ -54,10 +54,10 @@ button {
 textarea {
   resize: none !important;
 }
-
+/* 
 ::placeholder { 
    color: var(--secondaryColor) !important;
-}
+} */
 /* common styles */
 .app-btn{
 	background-color: var(--tertiaryColor);

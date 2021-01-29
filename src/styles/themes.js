@@ -1,4 +1,4 @@
-export const lightTheme = {
+export const coldTheme = {
     '--bg': '#5d5b6a',
     '--primaryColor': '#cfb495',
     '--secondaryColor': '#cfb495',
@@ -11,7 +11,7 @@ export const lightTheme = {
     '--ruler': '#cfb495',
 };
 
-export const darkTheme = {
+export const warmTheme = {
     '--bg': '#c19191',
     '--primaryColor': '#f0e9e9',
     '--secondaryColor': '#f0e9e9',
@@ -24,7 +24,7 @@ export const darkTheme = {
     '--ruler': '#8b5d5d',
 };
 
-export const solarizedDarkTheme = {
+export const halloweenTheme = {
     '--bg': '#5c5470',
     '--primaryColor': '#dbd8e3',
     '--secondaryColor': '#dbd8e3',
@@ -37,7 +37,7 @@ export const solarizedDarkTheme = {
     '--ruler': '#2a2438',
 };
 
-export const solarizedLightTheme = {
+export const VintageTheme = {
     '--bg': '#322f3d',
     '--primaryColor': '#d6d2c4',
     '--secondaryColor': '#fff5ea',
@@ -50,7 +50,7 @@ export const solarizedLightTheme = {
     '--ruler': '#87556f',
 };
 
-export const gruvboxDarkTheme = {
+export const retroTheme = {
     '--bg': '#3b6978',
     '--primaryColor': '#cae8d5',
     '--secondaryColor': '#cae8d5',
@@ -63,7 +63,7 @@ export const gruvboxDarkTheme = {
     '--ruler': '#204051',
 };
 
-export const nordTheme = {
+export const lightTheme = {
     '--bg': '#dfd3d3',
     '--primaryColor': '#7c7575',
     '--secondaryColor': '#fbf0f0',
@@ -77,7 +77,7 @@ export const nordTheme = {
     '--ruler': '#7c7575',
 };
 
-export const draculaTheme = {
+export const darkTheme = {
     '--bg': '#393e46',
     '--primaryColor': '#ef4f4f',
     '--secondaryColor': '#ef4f4f',

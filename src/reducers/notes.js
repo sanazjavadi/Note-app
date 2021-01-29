@@ -19,7 +19,17 @@ const notesSlice = createSlice({
     name: 'notes',
     initialState: {
         notes: [],
+        currentNote: {},
         loading: false,
+    },
+    reducers: {
+        setCurrentNote: (state, action) => {
+            const note = action.payload;
+            return {
+                ...state,
+                currentNote: note,
+            };
+        },
     },
     extraReducers: {
         [getNotes.pending]: (state) => {
@@ -34,5 +44,6 @@ const notesSlice = createSlice({
     },
 });
 
+export const { setCurrentNote } = notesSlice.actions;
 export const notesState = (state) => state.notes;
 export default notesSlice.reducer;
