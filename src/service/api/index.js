@@ -17,7 +17,7 @@ export const USER_TOKEN = user ? JSON.parse(user) : {};
 instance.defaults.headers.common.Authorization = AUTH_TOKEN || '';
 // Override timeout default for the library
 // Now all requests using this instance will wait 2.5 seconds before timing out
-instance.defaults.timeout = 2500;
+// instance.defaults.timeout = 2500;
 
 /**
  *

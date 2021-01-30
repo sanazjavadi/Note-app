@@ -31,3 +31,16 @@ export const deleteNoteService = (NoteId) => {
             return err.response || err;
         });
 };
+
+export const updateNoteService = (NoteId, data) => {
+    return instance
+        .put(`/v1/user/${USER_TOKEN.id}/note/${NoteId}`, data)
+        .then((res) => {
+            console.log(res.data);
+            return res.data;
+        })
+        .catch((error) => {
+            console.log(error.response || error);
+            return error.response || error;
+        });
+};

@@ -1,7 +1,5 @@
 .editor {
     position: relative;
-
-  
   }
 
   .editor-header {
@@ -41,20 +39,7 @@
     display: none;
   }
   
-  .save-options {
-    margin: 0 65px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
-  .save-options svg {
-    fill: var(--primaryColor);
-    cursor: pointer;
-    margin-left: 1rem;
-  }
-  
+
   @media screen and (max-width: 1093px) {
     .editor {
       margin-left: 430px;
@@ -96,5 +81,15 @@
           display: block;
           display: flex;
     }
+  }
+  .ce-toolbar__settings-btn{
+    background-color: transparent;
+  }
+
+  .ce-toolbar__settings-btn svg{
+    width:14px;
+    height: 14px;
+   
+
   }
   

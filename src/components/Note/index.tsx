@@ -19,6 +19,7 @@ const Index: React.FC<Iprops> = ({ note }) => {
 
     return (
         <div
+            key={note._id}
             role="button"
             tabIndex={-1}
             onKeyDown={() => dispatch(setCurrentNote(note))}

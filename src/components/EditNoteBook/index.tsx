@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { closeEditModal } from '../../reducers/modal';
-import { notebooksState, UpdateNoteBook } from '../../reducers/notebooks';
+import { notebooksState, UpdateNoteBook, getNoteBooks } from '../../reducers/notebooks';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
@@ -19,7 +19,7 @@ const Index: React.FC = () => {
 
         dispatch(closeEditModal());
         dispatch(UpdateNoteBook(data));
-
+        dispatch(getNoteBooks());
         title.setValue('');
     };
 

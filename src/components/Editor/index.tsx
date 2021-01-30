@@ -3,8 +3,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { openOptionsModal, modalState } from '../../reducers/modal';
-import { notesState } from '../../reducers/notes';
+import { openOptionsModal, modalState, closeOptionsModal } from '../../reducers/modal';
+import { notesState, setCurrentNote, updateNote, DeleteNote, getNotes } from '../../reducers/notes';
 import createNewEditor from '../../utils/createNewEditor';
 import { uploadImage } from '../../utils';
 import Modal from '../Modal';
@@ -29,13 +29,44 @@ const Index: React.FC = () => {
             uploadImage(file);
         }
     };
+    const deleteNoteHandler = async () => {
+        await dispatch(DeleteNote(currentNote._id));
+        dispatch(closeOptionsModal());
+        await dispatch(setCurrentNote({}));
+        dispatch(getNotes(currentNote.notebook._id));
+    };
+
+    const saveNoteHandler = async () => {
+        const data = await editor.save();
+        const title = data.blocks[0];
+        if (!currentNote._id) {
+            console.log('Note cannot be saved without title or note id');
+            return;
+        }
+
+        const description = data.blocks.find((block?: any) => block.type === 'paragraph');
+
+        const updatedNote = {
+            ...currentNote,
+            title: title.data.text,
+            description: description?.data?.text ? description.data.text : '',
+            data: data ? JSON.stringify(data) : '',
+        };
+
+        dispatch(updateNote({ id: currentNote._id, data: updatedNote }));
+        dispatch(setCurrentNote(updateNote));
+    };
 
     useEffect(() => {
         if (editor && editor.isReady) {
             editor.isReady.then(() => editor.destroy());
         }
         if (currentNote._id) {
-            setEditor(createNewEditor(currentNote.data));
+            if (currentNote.data) {
+                setEditor(createNewEditor(JSON.parse(currentNote.data)));
+            } else {
+                setEditor(createNewEditor(currentNote.data));
+            }
         }
     }, [currentNote.data]);
     return (
@@ -57,21 +88,30 @@ const Index: React.FC = () => {
                         <input id="add-cover" className="hidden" type="file" onChange={(e) => addCoverHandler(e)} />
                     )}
                 </div>
+                {currentNote.title && (
+                    <div className="flex justify-center ">
+                        <span className="my-3 w-5/12 text-gray-500  border-b border-gray-600 p-5 ">
+                            {currentNote.title}
+                        </span>
+                    </div>
+                )}
+
                 <div className="input-cover" />
 
-                <div id="editorjs" style={{ display: !currentNote._id ? 'none' : '' }} />
+                <div id="editorjs" className={!currentNote._id ? 'hidden' : ''} />
+                {currentNote._id && (
+                    <div className="flex items-center justify-between mx-10 mt-5 mb-10">
+                        <button type="button" className="app-btn px-7 py-2 rounded-full" onClick={saveNoteHandler}>
+                            Save
+                        </button>
+                        <OptionsIcon className="app-svg" onClick={() => dispatch(openOptionsModal())} />
+                    </div>
+                )}
             </div>
-            {currentNote._id && (
-                <div className="save-options">
-                    <button type="button" className="app-btn px-7 py-2 rounded-full">
-                        Save
-                    </button>
-                    <OptionsIcon onClick={() => dispatch(openOptionsModal())} />
-                </div>
-            )}
+
             {optionsModal && (
                 <Modal>
-                    <EditOptions />
+                    <EditOptions deleteNoteHandler={deleteNoteHandler} />
                 </Modal>
             )}
         </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeOptionsModal } from '../../reducers/modal';
@@ -11,7 +12,11 @@ import styles from './styles/editOptions.module.scss';
 // assets
 import Close from '../../svg/Cancel';
 
-const Index: React.FC = () => {
+type Iprops = {
+    deleteNoteHandler: () => void;
+};
+
+const Index: React.FC<Iprops> = ({ deleteNoteHandler }) => {
     const dispatch = useDispatch();
     const { theme } = useSelector(themeState);
     const { currentNote } = useSelector(notesState);
@@ -28,7 +33,13 @@ const Index: React.FC = () => {
                 <Close onClick={() => dispatch(closeOptionsModal())} />
             </div>
 
-            <div className={styles.action}>
+            <div
+                className={styles.action}
+                role="button"
+                tabIndex={-1}
+                onKeyDown={deleteNoteHandler}
+                onClick={deleteNoteHandler}
+            >
                 <span>Delete</span>
             </div>
 
