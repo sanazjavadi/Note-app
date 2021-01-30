@@ -1,0 +1,57 @@
+.options {
+    position: relative;
+    top: 30%;
+    transform: translateY(-50%);
+    margin: auto;
+    width: 390px;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    z-index: 4;
+    box-shadow: var(--bs1);
+  }
+  
+  .options .header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--ruler);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .options .header svg {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+      fill: var(--primaryColor);
+  }
+  
+  .options span {
+    margin-bottom: 0.2rem;
+    position: relative;
+    top: -6px;
+  }
+  
+  .action {
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    padding-left: 1rem;
+      margin-top: 0.5rem;
+  }
+  
+  .action svg {
+    fill: var(--primaryColor);
+  }
+  
+  .action span {
+    padding-left: 1rem;
+  }
+  
+  @media screen and (max-width: 440px) {
+    .options {
+          width: 320px;
+    }
+  }
+  

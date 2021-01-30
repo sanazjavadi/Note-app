@@ -6,6 +6,7 @@ const modalSlice = createSlice({
         noteModal: false,
         notebookModal: false,
         editModal: false,
+        optionsModal: false,
     },
     reducers: {
         openNoteModal(state) {
@@ -26,6 +27,12 @@ const modalSlice = createSlice({
         closeEditModal(state) {
             return { ...state, editModal: false };
         },
+        openOptionsModal(state) {
+            return { ...state, optionsModal: true };
+        },
+        closeOptionsModal(state) {
+            return { ...state, optionsModal: false };
+        },
     },
 });
 
@@ -36,6 +43,8 @@ export const {
     closeNotebookModal,
     openEditModal,
     closeEditModal,
+    openOptionsModal,
+    closeOptionsModal,
 } = modalSlice.actions;
 export const modalState = (state) => state.modal;
 export default modalSlice.reducer;
