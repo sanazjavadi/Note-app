@@ -1,0 +1,26 @@
+
+
+.edit-list {
+    background-color: var(--tertiaryColor);
+    color: var(--primaryColor);
+   transition: all 0.3s linear;
+}
+
+
+
+.edit-list-active {
+    background-color: var(--tertiaryColor);
+    color: var(--primaryColor);
+   transition: all 0.3s linear;
+   
+   &::after{
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 9px;
+    width: 2px;
+    height: 60px;
+    background-color: grey;
+   }
+}
+

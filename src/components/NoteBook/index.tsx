@@ -33,7 +33,10 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
         <>
             <li
                 key={_id}
-                className="mt-2 py-3 px-3 relative rounded-lg transition-opacity mx-2 flex justify-between cursor-pointer hover:bg-opacity-50 duration-500"
+                className="mt-2 py-3 px-3 relative
+                 rounded-lg transition-opacity 
+                 mx-2 flex justify-between
+                 cursor-pointer hover:bg-opacity-50 duration-500"
             >
                 <span
                     className="w-full"

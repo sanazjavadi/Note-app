@@ -40,9 +40,7 @@ const Index: React.FC = () => {
         <>
             <div
                 className={`${styles['bg-sidebar']} ${
-                    size > 900
-                        ? 'xl:col-span-2 lg:col-span-3 sm:col-span-3  h-screen flex flex-col border-theme'
-                        : styles.mobileSide
+                    size > 900 ? 'h-screen flex flex-col border-theme fixed' : styles.mobileSide
                 }`}
             >
                 <div className="flex flex-col justify-center items-center border-b-1 pb-3 border-grey-100 mt-5">
@@ -102,23 +100,22 @@ const Index: React.FC = () => {
                         />
                     </div>
                 </div>
-
-                {notebookModal && (
-                    <Modal>
-                        <AddNewNoteBook />
-                    </Modal>
-                )}
-                {noteModal && (
-                    <Modal>
-                        <AddNewnote />
-                    </Modal>
-                )}
-                {editModal && (
-                    <Modal>
-                        <EditModal />
-                    </Modal>
-                )}
             </div>
+            {notebookModal && (
+                <Modal>
+                    <AddNewNoteBook />
+                </Modal>
+            )}
+            {noteModal && (
+                <Modal>
+                    <AddNewnote />
+                </Modal>
+            )}
+            {editModal && (
+                <Modal>
+                    <EditModal />
+                </Modal>
+            )}
         </>
     );
 };

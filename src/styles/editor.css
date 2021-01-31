@@ -1,7 +1,8 @@
-.editor {
-    position: relative;
-  }
 
+
+  .editor-section{
+    margin-left:40%;
+  }
   .editor-header {
     background-color: var(--bg);
     margin-bottom: 0;
@@ -39,49 +40,6 @@
     display: none;
   }
   
-
-  @media screen and (max-width: 1093px) {
-    .editor {
-      margin-left: 430px;
-    }
-  
-    #editorjs {
-      padding: 0 1rem;
-    }
-  
-    .save-options {
-      margin-left: 0px;
-      margin-right: 0px;
-      padding: 0 1rem;
-    }
-  }
-  
-  @media screen and (max-width: 896px) {
-    .editor {
-      margin-left: 200px;
-    }
-  }
-  
-  @media screen and (max-width: 700px) {
-    #editorjs {
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    #editorjs {
-      font-size: 1rem;
-    }
-  
-    .editor {
-      margin-left: 0;
-    }
-  
-    .editor-header {
-          display: block;
-          display: flex;
-    }
-  }
   .ce-toolbar__settings-btn{
     background-color: transparent;
   }
@@ -92,4 +50,50 @@
    
 
   }
+  .ce-toolbar {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  
+  .middle-notes{
+    width:23%;
+    margin-left:17%;
+   
+  }
+  @media (max-width:1200px){
+ 
+    .middle-notes{
+      width:25%;
+      margin-left:20%
+    }
+    .editor-section{
+      width: 55%;
+      margin-left:45%;
+    }
+    #editorjs {
+     padding:0 3rem;
+    }
+      }
+
+      @media(max-width:900px) {
+
+        .middle-notes{
+         display: none;
+        }
+        .editor-section{
+          width: calc(100% - 100px);
+          margin-left:100px;
+        }
+          }
+      
+          @media(max-width:678px){
+            .editor-section{
+              width: calc(100% - 100px);
+              margin-left:100px;
+            }
+           
+          }
+
   

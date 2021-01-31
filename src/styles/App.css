@@ -85,7 +85,6 @@ input:-internal-autofill-selected,
   
 }
 
-
 .notebook-list ul li {
   background-color: var(--bg);
   color: var(--primaryColor);
@@ -97,10 +96,7 @@ input:-internal-autofill-selected,
   border:1px solid var(--ruler)
 }
 
-.edit-list{
-  background-color: var(--tertiaryColor);
-  color: var(--primaryColor);
-}
+
 
 .palet{
   opacity: 0;

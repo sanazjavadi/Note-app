@@ -70,7 +70,7 @@ const Index: React.FC = () => {
         }
     }, [currentNote.data]);
     return (
-        <div className="text-center font-bold xl:col-span-7 lg:col-span-7 md:col-sm-7 h-auto col-sm-8">
+        <div className="relative h-auto editor-section">
             <div className="editor">
                 <div className="w-full note-cover">
                     <label htmlFor="add-cover">
@@ -85,28 +85,29 @@ const Index: React.FC = () => {
                         />
                     </label>
                     {currentNote._id && (
-                        <input id="add-cover" className="hidden" type="file" onChange={(e) => addCoverHandler(e)} />
+                        <>
+                            <input id="add-cover" className="hidden" type="file" onChange={(e) => addCoverHandler(e)} />
+                            <div className="flex items-center justify-between mx-10 mt-5 mb-10">
+                                <button
+                                    type="button"
+                                    className="app-btn px-7 py-2 rounded-full"
+                                    onClick={saveNoteHandler}
+                                >
+                                    Save
+                                </button>
+                                <OptionsIcon className="app-svg" onClick={() => dispatch(openOptionsModal())} />
+                            </div>
+                        </>
                     )}
                 </div>
-                {currentNote.title && (
-                    <div className="flex justify-center ">
-                        <span className="my-3 w-5/12 text-gray-500  border-b border-gray-600 p-5 ">
-                            {currentNote.title}
-                        </span>
-                    </div>
-                )}
 
                 <div className="input-cover" />
-
-                <div id="editorjs" className={!currentNote._id ? 'hidden' : ''} />
-                {currentNote._id && (
-                    <div className="flex items-center justify-between mx-10 mt-5 mb-10">
-                        <button type="button" className="app-btn px-7 py-2 rounded-full" onClick={saveNoteHandler}>
-                            Save
-                        </button>
-                        <OptionsIcon className="app-svg" onClick={() => dispatch(openOptionsModal())} />
+                {currentNote.title && (
+                    <div className="flex mx-10 mt-16">
+                        <h1 className="pt-10 pl-5 text-2xl">{currentNote.title}</h1>
                     </div>
                 )}
+                <div id="editorjs" className={!currentNote._id ? 'hidden' : ''} />
             </div>
 
             {optionsModal && (

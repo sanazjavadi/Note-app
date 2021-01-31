@@ -1,10 +1,14 @@
 .bg-sidebar {
     background: var(--tertiaryColor);
     color: var(--secondaryColor);
+    width: 17%;
+    @media (max-width:1200px){
+  width:20%
+    }
 }
 
 .mobileSide {
-    position: relative;
+    position: fixed;
     display: flex;
     flex-direction: column;
     top: 0;
@@ -12,7 +16,7 @@
     width: 100px;
     left: 0px;
     transition: width 0.3s linear;
-
+  z-index: 12;
     &:hover {
         width: 250px;
     }

@@ -6,6 +6,9 @@
 
 
 
+.note-list{
+    @apply py-4 pl-3 rounded-lg mx-2 text-left mt-2 w-11/12 relative;
+  }
   
 
 

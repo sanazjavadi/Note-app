@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { DeleteNoteBook, duplicateNote, setCurrentNoteBookId } from '../../reducers/notebooks';
+import { DeleteNoteBook, duplicateNote, setCurrentNoteBookId, getNoteBooks } from '../../reducers/notebooks';
 import { openEditModal } from '../../reducers/modal';
 
 type Iprops = {
@@ -17,7 +17,10 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
         dispatch(openEditModal());
         dispatch(setCurrentNoteBookId({ id, name }));
     };
-
+    const deleteNoteHandler = async () => {
+        await dispatch(DeleteNoteBook(id));
+        dispatch(getNoteBooks());
+    };
     return (
         <div className="top-5 options-list -left-8 p-3 rounded-lg flex flex-col text-xs font-bold absolute z-10">
             <span
@@ -25,7 +28,7 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
                 role="button"
                 tabIndex={-1}
                 onKeyDown={() => dispatch(DeleteNoteBook(id))}
-                onClick={() => dispatch(DeleteNoteBook(id))}
+                onClick={deleteNoteHandler}
             >
                 Delete
             </span>

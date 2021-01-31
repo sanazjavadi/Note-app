@@ -29853,6 +29853,19 @@ video {
 
 @import "./App.css";
 
+.note-list{
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.75rem;
+  position: relative;
+  text-align: left;
+  width: 91.666667%;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
@@ -176217,9 +176230,6 @@ video {
     animation: bounce 1s infinite;
   }
 }
-
-
-
   
 
 

@@ -82,7 +82,7 @@ export const darkTheme = {
     '--primaryColor': '#ef4f4f',
     '--secondaryColor': '#ef4f4f',
     '--tertiaryColor': '#222831',
-    '--accent': '#FF79C6',
+    '--accent': '#30475e',
     '--white': '#FFF',
     '--bs1': '0 0 10px 3px rgba(0, 0, 0, 0.2)',
     '--overlay': 'rgba(0, 0, 0, 0.6)',
