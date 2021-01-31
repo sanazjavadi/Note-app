@@ -15,6 +15,7 @@ import '../../styles/editor.css';
 
 // assets
 import OptionsIcon from '../../svg/Option';
+import CoverImg from '../../assets/img/cover.jpg';
 
 const Index: React.FC = () => {
     const [editor, setEditor] = useState({});
@@ -76,11 +77,7 @@ const Index: React.FC = () => {
                     <label htmlFor="add-cover">
                         <img
                             className="object-cover w-full h-full"
-                            src={
-                                currentNote.cover
-                                    ? currentNote.cover
-                                    : 'https://images.unsplash.com/photo-1523289333742-be1143f6b766?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80'
-                            }
+                            src={currentNote.cover ? currentNote.cover : CoverImg}
                             alt="cover"
                         />
                     </label>
