@@ -1,0 +1,11 @@
+.notebook-list {
+    &:hover{
+        background-color: var(--bg);
+        color: var(--primaryColor);
+    }
+}
+
+.notebook-list-active{
+    background-color: var(--bg);
+    color: var(--primaryColor);
+  }

@@ -85,10 +85,7 @@ input:-internal-autofill-selected,
   
 }
 
-.notebook-list ul li {
-  background-color: var(--bg);
-  color: var(--primaryColor);
-}
+
 
 .options-list {
   background-color: var(--bg);

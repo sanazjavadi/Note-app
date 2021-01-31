@@ -9,6 +9,12 @@
 .note-list{
     @apply py-4 pl-3 rounded-lg mx-2 text-left mt-2 w-11/12 relative;
   }
+  .notebook-list{
+    @apply mt-2 py-3 px-3 relative
+    rounded-lg transition-opacity 
+    mx-2 flex justify-between
+    cursor-pointer
+  }
   
 
 

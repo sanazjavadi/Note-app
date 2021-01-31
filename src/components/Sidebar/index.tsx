@@ -47,9 +47,9 @@ const Index: React.FC = () => {
                     <div className="w-10 h-10 rounded-full overflow-hidden ">
                         <Avatar className="app-svg" />
                     </div>
-                    <p className="font-momo text-base text-center mt-2">{user.name}</p>
+                    <p className="text-sm md:text-base text-center mt-2">{user.name}</p>
                 </div>
-                <div className="mt-3 notebook-list overflow-y-auto h-3/5">
+                <div className="mt-3 overflow-y-auto h-3/5">
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
                         {!loading ? (
                             notebooks.length ? (
@@ -91,11 +91,11 @@ const Index: React.FC = () => {
                         }
                     >
                         <SignOutIcon
-                            className="w-7 h-7 cursor-pointer app-svg mb-3"
+                            className="lg:w-7 lg:h-7 cursor-pointer app-svg mb-3 w-5 h-5"
                             onClick={() => dispatch(signOut())}
                         />
                         <AddIcon
-                            className="w-9 h-9 cursor-pointer app-svg mb-3 "
+                            className="lg:w-9 lg:h-9 cursor-pointer app-svg mb-3 w-6 h-6"
                             onClick={() => dispatch(openNotebookModal())}
                         />
                     </div>
