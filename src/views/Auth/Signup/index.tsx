@@ -89,13 +89,13 @@ const Index: React.FC<Iprops> = ({ login }) => {
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
-            <p className=" text-center mt-5 mb-6 text-bold">
+            <p className=" text-center mt-5 mb-6  text-sm">
                 Already have an account?
                 <span
                     role="button"
                     tabIndex={-1}
                     onKeyDown={login}
-                    className="cursor-pointer  pl-2 hover:opacity-60 transition duration-300 ease-in-out"
+                    className="cursor-pointer text-base text-bold pl-2 hover:opacity-60 transition duration-300 ease-in-out"
                     onClick={login}
                 >
                     Log In

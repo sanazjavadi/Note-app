@@ -18,7 +18,7 @@ const Index: React.FC = () => {
             <div className="p-8 w-full">
                 <div className="flex items-center rounded-3xl  relative ">
                     <input
-                        className="focus:outline-none  app-input  w-full rounded-full py-3 px-6 "
+                        className="focus:outline-none app-input w-full rounded-full py-3 px-6 "
                         id="search"
                         type="text"
                         placeholder="Search"

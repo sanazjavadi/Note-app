@@ -22,7 +22,7 @@ const Index: React.FC<Iprops> = ({ type, placeholder, error, className, value, o
                 className={className}
                 {...props}
             />
-            {error && <small className="text-red-600 ml-3">{error}</small>}
+            {error && <small className="text-red-400 ml-3">{error}</small>}
         </div>
     );
 };

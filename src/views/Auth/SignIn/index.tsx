@@ -67,7 +67,7 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                 />
                 <button
                     type="submit"
-                    className={`py-4 w-full my-5  h-16 flex font-bold	 justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
+                    className={`py-4 w-full my-5  h-16 flex font-bold justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
                         loading && 'opacity-30 cursor-wait'
                     } `}
                 >
@@ -75,13 +75,13 @@ const Index: React.FC<Iprops> = ({ signup }) => {
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
-            <p className="text-center mt-5 mb-6 text-bold">
+            <p className="text-center mt-5 mb-6 text-sm">
                 You have not account ?
                 <span
                     role="button"
                     onKeyDown={signup}
                     tabIndex={-1}
-                    className="cursor-pointer  pl-2 hover:opacity-60 transition duration-300 ease-in-out"
+                    className="cursor-pointer text-base text-bold  pl-2 hover:opacity-60 transition duration-300 ease-in-out"
                     onClick={signup}
                 >
                     Sign Up

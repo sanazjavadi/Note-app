@@ -86,7 +86,7 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
                     <PlusIcon className="w-3 h-3 app-svg  hover:opacity-50" onClick={addNotebookHandler} />
                 </div>
             </li>
-            {dropdown && (
+            {currentNoteBook.id === _id && dropdown && (
                 <div className={` mt-1 mx-2 rounded-lg cursor-pointer ${styles['mobile-notes']}`}>
                     {notes?.map((note) => (
                         <p
