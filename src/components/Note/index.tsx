@@ -4,21 +4,16 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentNote, DeleteNote, notesState } from '../../reducers/notes';
 
+// InterFaces
+import { INote } from './Note';
+
 // styles
 import styles from './styles/note.module.scss';
 
 // assets
 import Cancel from '../../svg/Cancel';
 
-type Iprops = {
-    note: {
-        _id: number;
-        title: string;
-        description: string;
-    };
-};
-
-const Index: React.FC<Iprops> = ({ note }) => {
+const Note: React.FC<INote.IProps> = ({ note }) => {
     const dispatch = useDispatch();
     const { currentNote } = useSelector(notesState);
     const selectorNote = currentNote._id === note._id ? 'edit-list-active' : 'edit-list';
@@ -44,4 +39,4 @@ const Index: React.FC<Iprops> = ({ note }) => {
     );
 };
 
-export default Index;
+export default Note;

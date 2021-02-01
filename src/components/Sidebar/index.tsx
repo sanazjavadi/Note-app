@@ -25,7 +25,7 @@ import SignOutIcon from '../../svg/SignOut';
 import PalletIcon from '../../svg/Pallete';
 import Loading from '../../svg/Loading';
 
-const Index: React.FC = () => {
+const Sidebar: React.FC = () => {
     const dispatch = useDispatch();
     const { notebookModal, noteModal, editModal } = useSelector(modalState);
     const { notebooks, loading } = useSelector(notebooksState);
@@ -120,4 +120,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default Sidebar;

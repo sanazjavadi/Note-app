@@ -5,12 +5,10 @@ import { useDispatch } from 'react-redux';
 import { DeleteNoteBook, duplicateNote, setCurrentNoteBookId, getNoteBooks } from '../../reducers/notebooks';
 import { openEditModal } from '../../reducers/modal';
 
-type Iprops = {
-    id: number;
-    name: string;
-};
+// Interfaces
+import { INotebookOption } from './NotebookOption';
 
-const Index: React.FC<Iprops> = ({ id, name }) => {
+const NotebookOption: React.FC<INotebookOption.IProps> = ({ id, name }) => {
     const dispatch = useDispatch();
 
     const updateNote = () => {
@@ -54,4 +52,4 @@ const Index: React.FC<Iprops> = ({ id, name }) => {
     );
 };
 
-export default Index;
+export default NotebookOption;

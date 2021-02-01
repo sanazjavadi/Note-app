@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../hooks/useInput';
@@ -10,7 +8,7 @@ import { notebooksState } from '../../reducers/notebooks';
 // assets
 import CloseIcon from '../../svg/Cancel';
 
-const Index: React.FC = () => {
+const AddNewnote: React.FC = () => {
     const dispatch = useDispatch();
     const { currentNoteBook } = useSelector(notebooksState);
     const txtArea = useInput('');
@@ -52,4 +50,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default AddNewnote;

@@ -2,16 +2,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-type Iprops = {
-    type: string;
-    placeholder: string;
-    error: string;
-    className: string;
-    value: any;
-    onChange: () => void;
-};
+// InterFaces
+import { IInput } from './Input';
 
-const Index: React.FC<Iprops> = ({ type, placeholder, error, className, value, onChange, ...props }) => {
+const Input: React.FC<IInput.IProps> = ({ type, placeholder, error, className, value, onChange, ...props }) => {
     return (
         <div>
             <input
@@ -27,9 +21,9 @@ const Index: React.FC<Iprops> = ({ type, placeholder, error, className, value, o
     );
 };
 
-Index.defaultProps = {
+Input.defaultProps = {
     type: 'text',
     className: '',
 };
 
-export default Index;
+export default Input;

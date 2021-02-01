@@ -7,7 +7,7 @@ import { notebooksState, UpdateNoteBook, getNoteBooks } from '../../reducers/not
 // assets
 import CloseIcon from '../../svg/Cancel';
 
-const Index: React.FC = () => {
+const EditNoteBook: React.FC = () => {
     const dispatch = useDispatch();
     const { currentNoteBook } = useSelector(notebooksState);
     const title = useInput(currentNoteBook.name);
@@ -51,4 +51,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default EditNoteBook;

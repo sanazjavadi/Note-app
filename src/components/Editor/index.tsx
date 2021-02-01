@@ -17,7 +17,7 @@ import '../../styles/editor.css';
 import OptionsIcon from '../../svg/Option';
 import CoverImg from '../../assets/img/cover.jpg';
 
-const Index: React.FC = () => {
+const Editor: React.FC = () => {
     const [editor, setEditor] = useState({});
     const dispatch = useDispatch();
     const { optionsModal } = useSelector(modalState);
@@ -116,4 +116,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default Editor;

@@ -6,17 +6,16 @@ import { themeState } from '../../reducers/theme';
 import { notesState } from '../../reducers/notes';
 import downloadAsPdf from '../../utils/downloadAsPdf';
 
+// InterFaces
+import { IEditOptions } from './EditOptions';
+
 // styles
 import styles from './styles/editOptions.module.scss';
 
 // assets
 import Close from '../../svg/Cancel';
 
-type Iprops = {
-    deleteNoteHandler: () => void;
-};
-
-const Index: React.FC<Iprops> = ({ deleteNoteHandler }) => {
+const EditOptions: React.FC<IEditOptions.IProps> = ({ deleteNoteHandler }) => {
     const dispatch = useDispatch();
     const { theme } = useSelector(themeState);
     const { currentNote } = useSelector(notesState);
@@ -56,4 +55,4 @@ const Index: React.FC<Iprops> = ({ deleteNoteHandler }) => {
     );
 };
 
-export default Index;
+export default EditOptions;

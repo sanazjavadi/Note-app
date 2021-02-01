@@ -9,6 +9,9 @@ import { openNoteModal } from '../../reducers/modal';
 import { getNotes, notesState, setCurrentNote } from '../../reducers/notes';
 import { setCurrentNoteBookId, notebooksState } from '../../reducers/notebooks';
 
+// Interfaces
+import { INoteBook } from './NoteBook';
+
 // components
 import NotebookOption from '../NotebookOption';
 
@@ -21,14 +24,7 @@ import MenuIcon from '../../svg/Menu';
 import NextIcon from '../../svg/Next';
 import DownIcon from '../../svg/Down';
 
-type Iprops = {
-    notebook: {
-        _id: number;
-        name: string;
-    };
-};
-
-const Index: React.FC<Iprops> = ({ notebook }) => {
+const Index: React.FC<INoteBook.IProps> = ({ notebook }) => {
     const { _id, name } = notebook;
     const dispatch = useDispatch();
     const [dropdown, setDropdown] = useState(false);

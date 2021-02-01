@@ -10,7 +10,7 @@ import Note from '../Note';
 import SearchIcon from '../../svg/MagnifiyingGlass';
 import Loading from '../../svg/Loading';
 
-const Index: React.FC = () => {
+const Notes: React.FC = () => {
     const { notes, loading } = useSelector(notesState);
 
     return (
@@ -44,4 +44,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default Notes;

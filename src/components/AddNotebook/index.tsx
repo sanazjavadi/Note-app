@@ -1,17 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import useInput from '../../hooks/useInput';
 import { closeNotebookModal } from '../../reducers/modal';
 import { CreateNoteBook } from '../../reducers/notebooks';
-import { userState } from '../../reducers/auth';
 
 // assets
 import CloseIcon from '../../svg/Cancel';
-import Note from '../../svg/NoteImg';
 
-const Index: React.FC = () => {
+const AddNotebook: React.FC = () => {
     const dispatch = useDispatch();
-    const { user } = useSelector(userState);
     const title = useInput('');
     const addNotebookHandler = (e) => {
         e.preventDefault();
@@ -30,14 +27,6 @@ const Index: React.FC = () => {
                 className="w-3 h-3 absolute right-5 top-5 cursor-pointer"
                 onClick={() => dispatch(closeNotebookModal())}
             />
-
-            {/* <div className="flex items-center justify-between">
-                <div className="mb-5 w-7/12 h-16 relative">
-                    <div className="absolute  -top-6 left-7 ">
-                        <Note className="app-svg" />
-                    </div>
-                </div>
-            </div> */}
 
             <div className="w-full flex flex-col items-center justify-center pt-5">
                 <input
@@ -60,4 +49,4 @@ const Index: React.FC = () => {
     );
 };
 
-export default Index;
+export default AddNotebook;
