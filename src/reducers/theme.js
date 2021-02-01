@@ -1,13 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-    lightTheme,
-    darkTheme,
-    halloweenTheme,
-    VintageTheme,
-    retroTheme,
-    coldTheme,
-    warmTheme,
-} from '../styles/themes';
+import { lightTheme, darkTheme, halloweenTheme, VintageTheme, retroTheme, coldTheme } from '../styles/themes';
 
 const themes = {
     lightTheme,
@@ -16,7 +8,6 @@ const themes = {
     VintageTheme,
     retroTheme,
     coldTheme,
-    warmTheme,
 };
 
 const localSt = localStorage.getItem('themePreference');
@@ -24,7 +15,7 @@ const localSt = localStorage.getItem('themePreference');
 const themeSlice = createSlice({
     name: 'theme',
     initialState: {
-        themes: ['light', 'dark', 'halloween', 'Vintage', 'retro', 'cold', 'warm'],
+        themes: ['light', 'dark', 'halloween', 'Vintage', 'retro', 'cold'],
         current: localSt || 'dark',
         theme: localSt ? themes[`${localSt}Theme`] : darkTheme,
     },
@@ -40,9 +31,6 @@ const themeSlice = createSlice({
                 case 'dark':
                     localStorage.setItem('themePreference', theme);
                     return { ...state, current: theme, theme: darkTheme };
-                case 'warm':
-                    localStorage.setItem('themePreference', theme);
-                    return { ...state, current: theme, theme: warmTheme };
                 case 'halloween':
                     localStorage.setItem('themePreference', theme);
                     return {

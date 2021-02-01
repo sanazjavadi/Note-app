@@ -11,19 +11,6 @@ export const coldTheme = {
     '--ruler': '#cfb495',
 };
 
-export const warmTheme = {
-    '--bg': '#c19191',
-    '--primaryColor': '#f0e9e9',
-    '--secondaryColor': '#f0e9e9',
-    '--tertiaryColor': '#aa7070',
-    '--accent': '#ED9C32',
-    '--white': '#FFF',
-    '--bs1': '0 0 10px 3px rgba(0, 0, 0, 0.2)',
-    '--overlay': 'rgba(0, 0, 0, 0.6)',
-    '--font': 'Fira Sans',
-    '--ruler': '#8b5d5d',
-};
-
 export const halloweenTheme = {
     '--bg': '#5c5470',
     '--primaryColor': '#dbd8e3',
@@ -51,10 +38,10 @@ export const VintageTheme = {
 };
 
 export const retroTheme = {
-    '--bg': '#3b6978',
-    '--primaryColor': '#cae8d5',
-    '--secondaryColor': '#cae8d5',
-    '--tertiaryColor': '#84a9ac',
+    '--bg': '#293042',
+    '--primaryColor': '#e4e4e4',
+    '--secondaryColor': '#e4e4e4',
+    '--tertiaryColor': '#314152',
     '--accent': '#F9B639',
     '--white': '#FFF',
     '--bs1': '0 0 10px 3px rgba(0, 0, 0, 0.2)',

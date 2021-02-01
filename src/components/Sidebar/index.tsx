@@ -77,11 +77,13 @@ const Index: React.FC = () => {
                             onClick={() => dispatch(changeTheme())}
                         >
                             <PalletIcon className="w-7 h-7 cursor-pointer add-theme" />
-                            <div className="bg-gray-700 w-6 h-6 rounded-full palet" />
-                            <div className="w-6 h-6 rounded-full palet" />
-                            <div className="w-6 h-6 rounded-full palet" />
-                            <div className="w-6 h-6 rounded-full palet" />
-                            <div className="w-6 h-6 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
+                            <div className="w-5 h-5 rounded-full palet" />
                         </div>
                     )}
 

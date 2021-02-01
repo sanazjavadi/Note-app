@@ -9,6 +9,9 @@ import validate from '../../../utils/validateInfo';
 // components
 import Input from '../../../components/Input';
 
+// styles
+import styles from '../styles/auth.module.scss';
+
 // assets
 import Loading from '../../../svg/Loading';
 
@@ -42,7 +45,10 @@ const Index: React.FC<Iprops> = ({ login }) => {
         }
     };
     return (
-        <div className="mx-auto lg:w-4/12  md:w-5/12 sm:w-6/12 w-9/12 min-w-min	 h-auto flex items-center justify-center rounded-2xl flex-col bg-DarkPurple">
+        <div
+            className={`${styles.form} mx-auto lg:w-4/12  md:w-5/12 sm:w-6/12 w-9/12 min-w-min	h-auto
+            flex items-center justify-center rounded-2xl flex-col`}
+        >
             <div className="text-white flex items-center justify-between px-5 w-full p-7">
                 <span className="text-xl">Sign up</span>
             </div>
@@ -54,7 +60,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     type="text"
                     error={errors.name}
                     placeholder="Name"
-                    className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none"
+                    className="py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none"
                 />
                 <Input
                     value={email.value}
@@ -62,7 +68,7 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     type="text"
                     error={errors.email}
                     placeholder="Email"
-                    className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
+                    className="py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
                 <Input
                     value={password.value}
@@ -70,20 +76,20 @@ const Index: React.FC<Iprops> = ({ login }) => {
                     error={errors.password}
                     type="password"
                     placeholder="Password"
-                    className="bg-ShadePurple text-gray-100 py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
+                    className="py-4 px-3 w-full appearance-none rounded-2xl focus:outline-none mt-2"
                 />
 
                 <button
                     type="submit"
-                    className={`bg-LightPurple text-white py-4 w-full my-5  h-16 flex justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
-                        loading && 'opacity-30 cursor-wait bg-red-100'
+                    className={`py-4 w-full my-5  h-16 flex font-bold justify-center items-center rounded-2xl hover:opacity-80 transition duration-300 ease-in-out ${
+                        loading && 'opacity-30 cursor-wait'
                     } `}
                 >
-                    {loading ? <Loading className="w-16 h-16 fill-current text-white " /> : 'sign up'}
+                    {loading ? <Loading className="w-16 h-16 fill-current text-white " /> : 'Sign up'}
                 </button>
             </form>
             <hr className="h-2 w-full opacity-10 mt-4" />
-            <p className="text-LightPurple text-center mt-5 mb-6 text-bold">
+            <p className=" text-center mt-5 mb-6 text-bold">
                 Already have an account?
                 <span
                     role="button"

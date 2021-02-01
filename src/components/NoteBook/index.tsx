@@ -42,7 +42,6 @@ const Index: React.FC<Iprops> = ({ notebook }) => {
     const getNotebookHandler = () => {
         dispatch(getNotes(_id));
         dispatch(setCurrentNoteBookId({ id: _id, name }));
-        console.log(dropdown);
     };
     return (
         <div>

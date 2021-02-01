@@ -1,0 +1,15 @@
+.form{
+    color:var(--secondaryColor);
+    background-color:var(--tertiaryColor);
+    input {
+        background-color: var(--bg);
+        color:var(--secondaryColor);
+        &::placeholder{
+            color:var(--secondaryColor);
+        }
+    }
+    button{
+        background-color:var(--secondaryColor);
+       color:var(--tertiaryColor);
+    }
+  }

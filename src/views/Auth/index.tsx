@@ -8,7 +8,7 @@ const Index: React.FC = () => {
     const login = () => setauth('LOGIN');
     const signUp = () => setauth('SIGNUP');
     return (
-        <div className="w-full h-screen bg-violet grid items-center">
+        <div className="w-full h-screen grid items-center bg-transparent">
             {auth === 'SIGNUP' ? <SignUp login={login} /> : <Login signup={signUp} />}
         </div>
     );
