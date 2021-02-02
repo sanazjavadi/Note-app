@@ -70,18 +70,28 @@ const Sidebar: React.FC = () => {
                 <div className="mt-auto mb-5 border-t-3 border-grey-300 ">
                     {size > 900 && (
                         <div
-                            className="relative pallet-buttom mb-3 px-4 app-svg"
+                            className={`${styles['pallet-button']} relative mb-3 px-4 app-svg`}
                             role="button"
                             tabIndex={-1}
                             onKeyDown={() => dispatch(changeTheme())}
                             onClick={() => dispatch(changeTheme())}
                         >
-                            <PalletIcon className="w-7 h-7 cursor-pointer add-theme" />
-                            <div className="w-5 h-5 rounded-full palet" />
-                            <div className="w-5 h-5 rounded-full palet" />
-                            <div className="w-5 h-5 rounded-full palet" />
-                            <div className="w-5 h-5 rounded-full palet" />
-                            <div className="w-5 h-5 rounded-full palet" />
+                            <PalletIcon className="w-7 h-7 cursor-pointer relative z-9" />
+                            <div
+                                className={`${styles.palet} w-5 h-5 rounded-full  absolute top-0 left-2 cursor-pointer`}
+                            />
+                            <div
+                                className={`${styles.palet} w-5 h-5 rounded-full  absolute top-0 left-2 cursor-pointer`}
+                            />
+                            <div
+                                className={`${styles.palet} w-5 h-5 rounded-full  absolute top-0 left-2 cursor-pointer`}
+                            />
+                            <div
+                                className={`${styles.palet} w-5 h-5 rounded-full  absolute top-0 left-2 cursor-pointer`}
+                            />
+                            <div
+                                className={`${styles.palet} w-5 h-5 rounded-full  absolute top-0 left-2 cursor-pointer`}
+                            />
                         </div>
                     )}
 

@@ -24,7 +24,7 @@ import MenuIcon from '../../svg/Menu';
 import NextIcon from '../../svg/Next';
 import DownIcon from '../../svg/Down';
 
-const Index: React.FC<INoteBook.IProps> = ({ notebook }) => {
+const NoteBook: React.FC<INoteBook.IProps> = ({ notebook }) => {
     const { _id, name } = notebook;
     const dispatch = useDispatch();
     const [dropdown, setDropdown] = useState(false);
@@ -40,7 +40,7 @@ const Index: React.FC<INoteBook.IProps> = ({ notebook }) => {
         dispatch(setCurrentNoteBookId({ id: _id, name }));
     };
     return (
-        <div>
+        <div key={_id}>
             <li
                 key={_id}
                 className={`${currentNoteBook.id === notebook._id ? styles['notebook-list-active'] : ''} ${
@@ -73,13 +73,13 @@ const Index: React.FC<INoteBook.IProps> = ({ notebook }) => {
                 </span>
 
                 <div className="flex items-center relative">
-                    <span className="options">
-                        <MenuIcon className="w-3 h-3 app-svg mr-2 hover:opacity-50" />
-                        <div className="notebook-options">
+                    <span className={styles.options}>
+                        <MenuIcon className="w-4 h-4 app-svg mr-2 hover:opacity-50" />
+                        <div className={styles['notebook-options']}>
                             <NotebookOption id={_id} name={name} />
                         </div>
                     </span>
-                    <PlusIcon className="w-3 h-3 app-svg  hover:opacity-50" onClick={addNotebookHandler} />
+                    <PlusIcon className="w-4 h-4 app-svg  hover:opacity-50" onClick={addNotebookHandler} />
                 </div>
             </li>
             {currentNoteBook.id === _id && dropdown && (
@@ -99,4 +99,4 @@ const Index: React.FC<INoteBook.IProps> = ({ notebook }) => {
     );
 };
 
-export default Index;
+export default NoteBook;

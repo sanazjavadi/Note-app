@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/prop-types */
 import React from 'react';
@@ -14,12 +15,13 @@ import styles from './styles/note.module.scss';
 import Cancel from '../../svg/Cancel';
 
 const Note: React.FC<INote.IProps> = ({ note }) => {
+    const { _id, title, description } = note;
     const dispatch = useDispatch();
     const { currentNote } = useSelector(notesState);
     const selectorNote = currentNote._id === note._id ? 'edit-list-active' : 'edit-list';
     return (
         <div
-            key={note._id}
+            key={_id}
             role="button"
             tabIndex={-1}
             onKeyDown={() => dispatch(setCurrentNote(note))}
@@ -28,12 +30,12 @@ const Note: React.FC<INote.IProps> = ({ note }) => {
         >
             <Cancel
                 className="absolute top-3 right-3 w-3 h-3 cursor-pointer app-svg z-10"
-                onClick={() => dispatch(DeleteNote(note._id))}
+                onClick={() => dispatch(DeleteNote(_id))}
             />
-            <span>{note.title}</span>
+            <span>{title}</span>
 
             <p className="text-sm mt-5">
-                {note.description.length > 20 ? `${note.description.substr(0, 20)}...` : note.description}
+                {description.length > 20 ? `${note.description.substr(0, 20)}...` : description}
             </p>
         </div>
     );

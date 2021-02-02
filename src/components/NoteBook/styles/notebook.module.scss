@@ -1,29 +1,43 @@
 .notebook-list {
-    &:hover{
+    &:hover {
         background-color: var(--bg);
         color: var(--primaryColor);
     }
 }
-.drop-svg{
+.drop-svg {
     display: none;
-    @media(max-width: 900px){
+    @media (max-width: 900px) {
         display: block;
-        &:hover{
+        &:hover {
             opacity: 0.8;
         }
     }
 }
 
-.notebook-list-active{
+.notebook-list-active {
     background-color: var(--bg);
     color: var(--primaryColor);
-  }
-  .mobile-notes{
+}
+.mobile-notes {
     background-color: var(--bg);
     color: var(--primaryColor);
-    transition:all 0.3s linear;
+    transition: all 0.3s linear;
     display: none;
-    @media(max-width: 900px){
+    @media (max-width: 900px) {
         display: block;
     }
-  }
+}
+
+.notebook-options {
+    display: none;
+    transition: all 0.3s ease-in;
+}
+
+.options {
+    transition: all 0.3s ease-in;
+    &:hover {
+        .notebook-options {
+            display: block;
+        }
+    }
+}

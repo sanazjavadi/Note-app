@@ -8,6 +8,9 @@ import { openEditModal } from '../../reducers/modal';
 // Interfaces
 import { INotebookOption } from './NotebookOption';
 
+// styles
+import styles from './styles/NotebookOption.module.scss';
+
 const NotebookOption: React.FC<INotebookOption.IProps> = ({ id, name }) => {
     const dispatch = useDispatch();
 
@@ -15,12 +18,12 @@ const NotebookOption: React.FC<INotebookOption.IProps> = ({ id, name }) => {
         dispatch(openEditModal());
         dispatch(setCurrentNoteBookId({ id, name }));
     };
-    const deleteNoteHandler = async () => {
-        await dispatch(DeleteNoteBook(id));
+    const deleteNoteHandler = () => {
+        dispatch(DeleteNoteBook(id));
         dispatch(getNoteBooks());
     };
     return (
-        <div className="top-5 options-list -left-8 p-3 rounded-lg flex flex-col text-xs font-bold absolute z-10">
+        <div className={`${styles['options-list']} top-5 -left-9 p-3 rounded-lg flex flex-col text-xs absolute z-10`}>
             <span
                 className="hover:opacity-50"
                 role="button"

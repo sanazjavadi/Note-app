@@ -52,8 +52,8 @@ export const retroTheme = {
 
 export const lightTheme = {
     '--bg': '#dfd3d3',
-    '--primaryColor': '#7c7575',
-    '--secondaryColor': '#fbf0f0',
+    '--primaryColor': '#fbf0f0',
+    '--secondaryColor': '#7c7575',
     '--tertiaryColor': '#b8b0b0',
     '--accent': '#87C0D0',
     '--white': '#FFF',

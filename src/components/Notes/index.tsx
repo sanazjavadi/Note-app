@@ -14,7 +14,7 @@ const Notes: React.FC = () => {
     const { notes, loading } = useSelector(notesState);
 
     return (
-        <div className="middle-notes text-center flex fixed flex-col items-center border-theme h-screen">
+        <div className="notes-section text-center flex fixed flex-col items-center border-theme h-screen">
             <div className="p-8 w-full">
                 <div className="flex items-center rounded-3xl  relative ">
                     <input
