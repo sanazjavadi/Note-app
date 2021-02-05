@@ -57,7 +57,7 @@
     margin-left: 17%;
 }
 @media (max-width: 1200px) {
-    .middle-notes {
+    .notes-section {
         width: 25%;
         margin-left: 20%;
     }

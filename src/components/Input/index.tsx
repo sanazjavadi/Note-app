@@ -12,7 +12,7 @@ const Input: React.FC<IInput.IProps> = ({ type, placeholder, error, className, v
                 type={type}
                 value={value}
                 placeholder={placeholder}
-                onChange={onChange}
+                onChange={(e?: any) => onChange(e)}
                 className={className}
                 {...props}
             />

@@ -34,6 +34,20 @@ const notesSlice = createSlice({
                 currentNote: note,
             };
         },
+        searchNotes: (state, action) => {
+            const arrayNotes = ['title', 'data', 'description'];
+            return {
+                ...state,
+                notes: state.notes.filter((note) => {
+                    if (!action.payload.length) {
+                        return note;
+                    }
+                    return arrayNotes.every((noteItem) => {
+                        return note[noteItem].toLowerCase().includes(action.payload.toLowerCase());
+                    });
+                }),
+            };
+        },
     },
     extraReducers: {
         [getNotes.pending]: (state) => {
@@ -57,6 +71,6 @@ const notesSlice = createSlice({
     },
 });
 
-export const { setCurrentNote } = notesSlice.actions;
+export const { setCurrentNote, searchNotes } = notesSlice.actions;
 export const notesState = (state) => state.notes;
 export default notesSlice.reducer;

@@ -53,7 +53,7 @@ const Sidebar: React.FC = () => {
                     <ul className={size < 900 ? styles['notebook-list'] : ''}>
                         {!loading ? (
                             notebooks.length ? (
-                                notebooks.map((notebook) => <NoteBook notebook={notebook} />)
+                                notebooks.map((notebook) => <NoteBook notebook={notebook} key={notebook.name} />)
                             ) : (
                                 <div className="w-full flex justify-center items-center text-xs">
                                     You have no Notebook yet !
