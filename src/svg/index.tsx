@@ -8,3 +8,4 @@ export { default as Loading } from './Loading';
 export { default as Option } from './Option';
 export { default as Next } from './Next';
 export { default as Down } from './Down';
+export { default as Github } from './Github';

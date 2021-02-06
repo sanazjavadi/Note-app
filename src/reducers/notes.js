@@ -36,16 +36,15 @@ const notesSlice = createSlice({
         },
         searchNotes: (state, action) => {
             const arrayNotes = ['title', 'data', 'description'];
+            const filteredNotes = state.notes.filter((note) => {
+                return arrayNotes.every((noteItem) => {
+                    return note[noteItem].toLowerCase().includes(action.payload.toLowerCase());
+                });
+            });
+            const showNotes = state.notes;
             return {
                 ...state,
-                notes: state.notes.filter((note) => {
-                    if (!action.payload.length) {
-                        return note;
-                    }
-                    return arrayNotes.every((noteItem) => {
-                        return note[noteItem].toLowerCase().includes(action.payload.toLowerCase());
-                    });
-                }),
+                notes: !action.payload.length ? showNotes : filteredNotes,
             };
         },
     },

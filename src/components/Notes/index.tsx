@@ -17,6 +17,7 @@ const Notes: React.FC = () => {
     const { notes, loading } = useSelector(notesState);
     const dispatch = useDispatch();
     const searchTerm = useInput('');
+
     const handleSearch = (e) => {
         searchTerm.onChange(e);
         dispatch(searchNotes(searchTerm.value));
