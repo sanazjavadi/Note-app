@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Remember
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Remember is an notetaking application that allows you to take notes by including text, images, videos, links, lists, checkboxes and support for code snippets, file attachments can be expected in the near future.
 
-## Available Scripts
+Remember is built with React, Redux Toolkit and Firebase. Remeber uses firestore to store the user notes and it uses Editor.js library for editing the notes.
 
-In the project directory, you can run:
+Remember uses three pane layout to organize, edit and save your notes.
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Core Dependencies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| Package               | For              |
+| --------------------- | ---------------- |
+| Redux Toolkit         | State Management |
+| Firebase              | Firebase SDK     |
+| Editor.js and Plugins | Editing notes    |
 
-### `yarn test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Include text, images, videos, links, lists, checkboxes
+- Organize notes by notebooks
+- Search notes
+- Export to PDF
+- Seven different themes
 
-### `yarn build`
+## Running locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. You need to setup a firebase project and enable 'Authentication' and 'Cloud Firestore' support
+2. Once done, you need to setup .env file at the root of this repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# https://api.cloudinary.com/v1_1/CLOUD_NAME/image/upload
+REACT_APP_UPLOAD_IMAGE_URL=[x]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# http endpoint for previewing links (firebase cloud fuction 'functions/index.js')
+REACT_APP_LINK_PREVIEW=[x]
 
-### `yarn eject`
+# firebase config
+REACT_APP_API_KEY=[x]
+REACT_APP_AUTH_DOMAIN=[x]
+REACT_APP_DATABASE_URL=[x]
+REACT_APP_PROJECT_ID=[x]
+REACT_APP_STORAGE_BUCKET=[x]
+REACT_APP_MESSAGING_SENDER_ID=[x]
+REACT_APP_APP_ID=[x]
+REACT_APP_MEASUREMENT_ID=[x]
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. Then run <code>npm i && npm start</code>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Chrome Extension
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[ravisojitra](https://github.com/ravisojitra) created a chrome extension which allows you to capture, edit and save your notes offline, here's the [repo](https://github.com/ravisojitra/notebook)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Watch the Demo
 
-## Learn More
+[![Video](screenshots/editor_dark.png)](https://www.youtube.com/watch?v=LOxviFtsTOU "Remember Demo")
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Editor (Solarized Dark)
 
-### Code Splitting
+![Ediotor Solarized Dark](screenshots/editor_dark.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Editor (Gruvbox Dark)
 
-### Analyzing the Bundle Size
+![Ediotor Solarized Light](screenshots/editor_light.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### YT Video Embed (Gruvbox)
 
-### Making a Progressive Web App
+![YT Video Embed](screenshots/video_embed.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Link Previews and Checkboxes (Nord)
 
-### Advanced Configuration
+![Link Previes and Checkboxes](screenshots/link_previews_checkboxes.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## TODO
 
-### Deployment
+1. Support for code snippets, quote, file attachments
+2. Export options: HTML, Markdown
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
