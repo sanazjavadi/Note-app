@@ -1,11 +1,12 @@
-# Remember
+# Note app
 
-Remember is an notetaking application that allows you to take notes by including text, images, videos, links, lists, checkboxes and support for code snippets, file attachments can be expected in the near future.
+Note app is an notetaking application that allows you to take notes by including text, images, videos, links, lists, checkboxes and support for code snippets, file attachments can be expected in the near future.
 
 Remember is built with React, Redux Toolkit and Firebase. Remeber uses firestore to store the user notes and it uses Editor.js library for editing the notes.
 
 Remember uses three pane layout to organize, edit and save your notes.
 
+![Alt text](screenshots/screen.gif) / ![](screenshots/screen.gif)
 
 ## Core Dependencies
 
@@ -22,10 +23,4 @@ Remember uses three pane layout to organize, edit and save your notes.
 - Search notes
 - Export to PDF
 - Seven different themes
-
-
-## TODO
-
-1. Support for code snippets, quote, file attachments
-2. Export options: HTML, Markdown
 
