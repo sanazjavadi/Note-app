@@ -6,7 +6,7 @@ Remember is built with React, Redux Toolkit and Firebase. Remeber uses firestore
 
 Remember uses three pane layout to organize, edit and save your notes.
 
-![Alt text](screenshots/screen.gif) / ![](screenshots/screen.gif)
+![Alt text](screenshots/screen.gif) 
 
 ## Core Dependencies
 
