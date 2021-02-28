@@ -5,7 +5,15 @@ import React from 'react';
 // InterFaces
 import { IInput } from './Input';
 
-const Input: React.FC<IInput.IProps> = ({ type, placeholder, error, className, value, onChange, ...props }) => {
+const Input: React.FC<IInput.IProps> = ({
+    type = 'text',
+    placeholder,
+    error,
+    className,
+    value,
+    onChange,
+    ...other
+}) => {
     return (
         <div>
             <input
@@ -14,7 +22,7 @@ const Input: React.FC<IInput.IProps> = ({ type, placeholder, error, className, v
                 placeholder={placeholder}
                 onChange={(e?: any) => onChange(e)}
                 className={className}
-                {...props}
+                {...other}
             />
             {error && <small className="text-red-400 ml-3">{error}</small>}
         </div>
