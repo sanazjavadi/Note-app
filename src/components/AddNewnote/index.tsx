@@ -1,3 +1,4 @@
+/* tslint:disable */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../hooks/useInput';
@@ -21,6 +22,8 @@ const AddNewnote: React.FC = () => {
         };
         const { id } = currentNoteBook;
         dispatch(closeNoteModal());
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(createNote({ id, data }));
     };
 

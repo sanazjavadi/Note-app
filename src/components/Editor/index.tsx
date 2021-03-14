@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { openOptionsModal, modalState, closeOptionsModal } from '../../reducers/modal';
@@ -18,7 +20,7 @@ import OptionsIcon from '../../svg/Option';
 import CoverImg from '../../assets/img/cover.jpg';
 
 const Editor: React.FC = () => {
-    const [editor, setEditor] = useState({});
+    const [editor, setEditor] = useState<any>({});
     const dispatch = useDispatch();
     const { optionsModal } = useSelector(modalState);
     const { currentNote } = useSelector(notesState);
@@ -31,9 +33,13 @@ const Editor: React.FC = () => {
         }
     };
     const deleteNoteHandler = async () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         await dispatch(DeleteNote(currentNote._id));
         dispatch(closeOptionsModal());
         await dispatch(setCurrentNote({}));
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(getNotes(currentNote.notebook._id));
     };
 
@@ -54,6 +60,8 @@ const Editor: React.FC = () => {
             data: data ? JSON.stringify(data) : '',
         };
 
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(updateNote({ id: currentNote._id, data: updatedNote }));
         dispatch(setCurrentNote(updateNote));
     };

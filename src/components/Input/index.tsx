@@ -20,7 +20,7 @@ const Input: React.FC<IInput.IProps> = ({
                 type={type}
                 value={value}
                 placeholder={placeholder}
-                onChange={(e?: any) => onChange(e)}
+                onChange={(e:  React.ChangeEvent<HTMLInputElement>) => onChange(e)}
                 className={className}
                 {...other}
             />

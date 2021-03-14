@@ -18,6 +18,8 @@ const EditNoteBook: React.FC = () => {
         };
 
         dispatch(closeEditModal());
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(UpdateNoteBook(data));
         dispatch(getNoteBooks());
         title.setValue('');
