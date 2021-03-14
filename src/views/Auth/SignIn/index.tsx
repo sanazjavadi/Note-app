@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/prop-types */
+
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
@@ -20,7 +21,7 @@ type Iprops = {
 };
 
 const Index: React.FC<Iprops> = ({ signup }) => {
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({ email: '', password: '' });
     const dispatch = useDispatch();
     const { loading } = useSelector(userState);
 

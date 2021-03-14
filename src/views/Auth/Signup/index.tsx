@@ -22,7 +22,7 @@ type Iprops = {
 const Index: React.FC<Iprops> = ({ login }) => {
     const dispatch = useDispatch();
     const { loading } = useSelector(userState);
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({ name: '', email: '', password: '' });
 
     // form values
     const name = useInput('');
@@ -41,6 +41,8 @@ const Index: React.FC<Iprops> = ({ login }) => {
         e.preventDefault();
         setErrors(validate(data));
         if (Object.keys(errors).length === 0) {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             dispatch(signUp(data));
         }
     };
