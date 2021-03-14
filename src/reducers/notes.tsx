@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
@@ -16,6 +17,8 @@ export const DeleteNote = createAsyncThunk('delete/note', (NoteId) => {
 });
 
 export const updateNote = createAsyncThunk('update/note', (payload) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     return updateNoteService(payload.id, payload.data);
 });
 
@@ -49,16 +52,16 @@ const notesSlice = createSlice({
         },
     },
     extraReducers: {
-        [getNotes.pending]: (state) => {
+        [getNotes.pending as any]: (state) => {
             return { ...state, loading: true };
         },
-        [getNotes.fulfilled]: (state, action) => {
+        [getNotes.fulfilled as any]: (state, action) => {
             return { ...state, loading: false, notes: action.payload };
         },
-        [createNote.fulfilled]: (state, action) => {
+        [createNote.fulfilled as any]: (state, action) => {
             return { ...state, loading: false, notes: [...state.notes, action.payload] };
         },
-        [updateNote.fulfilled]: (state, action) => {
+        [updateNote.fulfilled as any]: (state, action) => {
             const updatedNote = state.notes.map((note) => {
                 if (note._id === action.payload._id) {
                     return action.payload;

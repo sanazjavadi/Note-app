@@ -35,6 +35,8 @@ const Index: React.FC<Iprops> = ({ signup }) => {
             password: password.value,
         };
         setErrors(validate(data));
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(Login(data));
     };
 

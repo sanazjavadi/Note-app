@@ -1,5 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/prop-types */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import React from 'react';
 
 // InterFaces
@@ -20,7 +22,7 @@ const Input: React.FC<IInput.IProps> = ({
                 type={type}
                 value={value}
                 placeholder={placeholder}
-                onChange={(e:  React.ChangeEvent<HTMLInputElement>) => onChange(e)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e)}
                 className={className}
                 {...other}
             />

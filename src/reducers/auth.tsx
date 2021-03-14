@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prettier/prettier */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signUpService, logInService  } from '../service/api/auth'
@@ -31,25 +32,25 @@ const authSlice = createSlice({
         }
     },
     extraReducers: {
-        [signUp.pending]: (state) => {
+        [signUp.pending as any]: (state) => {
             return {...state, loading:true}
 
         },
-        [signUp.rejected]: (state, action) => {
+        [signUp.rejected as any]: (state, action) => {
           return {...state, loading:false, error:action.error.message}
            
         },
-        [signUp.fulfilled]: (state, action) => {
+        [signUp.fulfilled as any]: (state, action) => {
         return {...state, loading:false, user:action.payload.user, token: localStorage.getItem('token')}            
           
         },
-        [Login.pending]: (state) => {
+        [Login.pending as any]: (state) => {
             return {...state, loading:true}
         },
-        [Login.rejected]: (state, action) => {
+        [Login.rejected as any]: (state, action) => {
             return {...state, loading:false, error:action.error.message}
         },
-        [Login.fulfilled]: (state, action) => {
+        [Login.fulfilled as any]: (state, action) => {
             return {...state, loading:false, user:action.payload.user, token: localStorage.getItem('token')}
         }
 

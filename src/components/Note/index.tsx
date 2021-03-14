@@ -19,6 +19,11 @@ const Note: React.FC<INote.IProps> = ({ note }) => {
     const dispatch = useDispatch();
     const { currentNote } = useSelector(notesState);
     const selectorNote = currentNote._id === note._id ? 'edit-list-active' : 'edit-list';
+    const handler = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        dispatch(DeleteNote(_id));
+    };
     return (
         <div
             key={_id}
@@ -28,10 +33,7 @@ const Note: React.FC<INote.IProps> = ({ note }) => {
             className={`${styles[selectorNote]} note-list`}
             onClick={() => dispatch(setCurrentNote(note))}
         >
-            <Cancel
-                className="absolute top-3 right-3 w-3 h-3 cursor-pointer app-svg z-10"
-                onClick={() => dispatch(DeleteNote(_id))}
-            />
+            <Cancel className="absolute top-3 right-3 w-3 h-3 cursor-pointer app-svg z-10" onClick={() => handler()} />
             <span>{title}</span>
 
             <p className="text-sm mt-5">

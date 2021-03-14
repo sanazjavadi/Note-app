@@ -4,8 +4,9 @@ declare namespace IInput {
         placeholder: string;
         error: string;
         className: string;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         value: any;
-        onChange: () => void;
+        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     }
 }
 

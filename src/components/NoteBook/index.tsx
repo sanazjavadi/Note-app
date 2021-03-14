@@ -36,6 +36,8 @@ const NoteBook: React.FC<INoteBook.IProps> = ({ notebook }) => {
     };
 
     const getNotebookHandler = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(getNotes(_id));
         dispatch(setCurrentNoteBookId({ id: _id, name }));
     };

@@ -19,6 +19,8 @@ const NotebookOption: React.FC<INotebookOption.IProps> = ({ id, name }) => {
         dispatch(setCurrentNoteBookId({ id, name }));
     };
     const deleteNoteHandler = () => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         dispatch(DeleteNoteBook(id));
         dispatch(getNoteBooks());
     };
@@ -28,7 +30,7 @@ const NotebookOption: React.FC<INotebookOption.IProps> = ({ id, name }) => {
                 className="hover:opacity-50"
                 role="button"
                 tabIndex={-1}
-                onKeyDown={() => dispatch(DeleteNoteBook(id))}
+                onKeyDown={deleteNoteHandler}
                 onClick={deleteNoteHandler}
             >
                 Delete

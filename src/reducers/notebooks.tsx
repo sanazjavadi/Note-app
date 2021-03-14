@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
@@ -13,6 +14,8 @@ export const getNoteBooks = createAsyncThunk('get/notebooks', () => getNotebooks
 export const CreateNoteBook = createAsyncThunk('create/notebook', (data) => createNotebookService(data));
 
 export const UpdateNoteBook = createAsyncThunk('update/notebook', (data, { getState }) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     const { currentNoteBook } = getState().notebooks;
     return updateNotebookService(data, currentNoteBook);
 });
@@ -29,6 +32,8 @@ const notebookSlice = createSlice({
     reducers: {
         duplicateNote: (state, action) => {
             const duplicate = state.notebooks.find((note) => note._id === action.payload);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             state = state.notebooks.push({ ...duplicate, name: `copy of (${duplicate.name})` });
         },
         setCurrentNoteBookId: (state, action) => {
@@ -39,16 +44,16 @@ const notebookSlice = createSlice({
         },
     },
     extraReducers: {
-        [getNoteBooks.pending]: (state) => {
+        [getNoteBooks.pending as any]: (state) => {
             return { ...state, loading: true };
         },
-        [getNoteBooks.fulfilled]: (state, action) => {
+        [getNoteBooks.fulfilled as any]: (state, action) => {
             return { ...state, loading: false, notebooks: action.payload };
         },
-        [CreateNoteBook.fulfilled]: (state, action) => {
+        [CreateNoteBook.fulfilled as any]: (state, action) => {
             return { ...state, notebooks: [...state.notebooks, action.payload] };
         },
-        [UpdateNoteBook.fulfilled]: (state, action) => {
+        [UpdateNoteBook.fulfilled as any]: (state, action) => {
             const newNoteBook = action.payload;
             const updatedNoteBooks = state.notebooks.map((noteBook) => {
                 if (noteBook._id === action.payload._id) {
